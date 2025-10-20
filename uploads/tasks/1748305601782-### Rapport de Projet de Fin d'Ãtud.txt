@@ -1,0 +1,5155 @@
+### Rapport de Projet de Fin d'Études
+
+## Système de Gestion RH et Suivi du Temps
+
+---
+
+## Dédicaces
+
+À mes parents, qui ont été mon soutien inconditionnel tout au long de mon parcours académique.
+
+À ma famille, pour leur patience et leurs encouragements constants.
+
+À mes amis, qui ont su m'apporter joie et motivation dans les moments difficiles.
+
+À tous mes professeurs, qui m'ont transmis leur savoir avec passion et dévouement.
+
+À tous ceux qui croient en l'importance de l'innovation technologique pour améliorer la gestion des ressources humaines.
+
+---
+
+## Remerciements
+
+Je tiens à exprimer ma profonde gratitude à mon encadrant académique pour ses conseils avisés et son suivi rigoureux. Mes sincères remerciements vont également à mon maître de stage pour m'avoir accordé sa confiance et m'avoir guidé tout au long de ce projet. Je remercie l'équipe technique pour leur collaboration et leur disponibilité. Enfin, je suis reconnaissant envers l'établissement qui m'a fourni les ressources nécessaires pour mener à bien ce travail.
+
+---
+
+## Résumé
+
+Ce projet de fin d'études a consisté en la conception et le développement d'un système complet de gestion des ressources humaines et de suivi du temps. La solution implémentée répond aux besoins modernes des entreprises en matière de gestion du personnel, d'automatisation des processus RH et d'analyse des données. Le système intègre plusieurs modules interconnectés : gestion des utilisateurs et départements, suivi des présences, gestion des congés, attribution et suivi des tâches, messagerie interne, et un assistant IA pour l'analyse des performances. Développé avec la stack MERN (MongoDB, Express, React, Node.js), le système offre une interface utilisateur intuitive et responsive, tout en garantissant la sécurité des données et l'évolutivité de l'application. Les tests réalisés ont démontré une amélioration significative de l'efficacité des processus RH et une meilleure expérience utilisateur par rapport aux solutions existantes.
+
+**Mots-clés** : Gestion RH, Suivi du temps, MERN Stack, MongoDB, React, Node.js, Express, Assistant IA, Automatisation des processus
+
+---
+
+## Liste des figures
+
+Figure I.1 : Architecture générale du système	21
+Figure I.2 : Organigramme de l'entreprise	23
+Figure I.3 : Processus RH existant	25
+Figure I.4 : Diagramme de flux de données du système existant	26
+Figure I.5 : Architecture de la solution proposée	28
+
+Figure II.1 : Architecture logicielle en couches	31
+Figure II.2 : Architecture MERN Stack	32
+Figure II.3 : Diagramme de cas d'utilisation global	35
+Figure II.4 : Diagramme de cas d'utilisation "S'authentifier"	36
+Figure II.5 : Diagramme de cas d'utilisation "Administrateur"	37
+Figure II.6 : Diagramme de cas d'utilisation "Employé"	38
+Figure II.7 : Diagramme de séquence "Authentification"	40
+Figure II.8 : Diagramme de séquence "Gestion des utilisateurs"	41
+Figure II.9 : Diagramme de séquence "Gestion des présences"	42
+Figure II.10 : Diagramme de séquence "Gestion des congés"	43
+Figure II.11 : Diagramme de séquence "Gestion des tâches"	44
+Figure II.12 : Diagramme de classes	46
+Figure II.13 : Modèle de données MongoDB	48
+
+Figure III.1 : Interface d'authentification	55
+Figure III.2 : Interface du tableau de bord administrateur	56
+Figure III.3 : Interface de gestion des utilisateurs	57
+Figure III.4 : Interface de gestion des départements	58
+Figure III.5 : Interface du tableau de bord employé	59
+Figure III.6 : Interface de suivi des présences	60
+Figure III.7 : Interface de gestion des congés	61
+Figure III.8 : Interface de gestion des tâches	62
+Figure III.9 : Interface de messagerie	63
+Figure III.10 : Interface de l'assistant IA	64
+Figure III.11 : Interface des rapports et analyses	65
+
+---
+
+## Liste des Tableaux
+
+Tableau I.1 : Comparaison des solutions existantes	27
+Tableau I.2 : Avantages et inconvénients du système existant	27
+
+Tableau II.1 : Acteurs du système	34
+Tableau II.2 : Besoins fonctionnels	34
+Tableau II.3 : Description du cas d'utilisation "S'authentifier"	36
+Tableau II.4 : Description du cas d'utilisation "Gérer les utilisateurs"	37
+Tableau II.5 : Description du cas d'utilisation "Gérer les présences"	38
+Tableau II.6 : Description du cas d'utilisation "Gérer les congés"	39
+Tableau II.7 : Description du cas d'utilisation "Gérer les tâches"	39
+Tableau II.8 : Besoins non fonctionnels	49
+
+Tableau III.1 : Environnement matériel	53
+Tableau III.2 : Environnement logiciel	54
+Tableau III.3 : Tests fonctionnels	66
+Tableau III.4 : Tests de performance	67
+
+---
+
+## Sommaire
+
+**Chapitre I : Présentation du contexte général du projet et étude de l'existant**
+
+- I. Introduction
+- II. Cadre du projet
+- III. Présentation de la société
+- IV. Étude de l'existant
+
+- IV.1. Descriptif de l'existant
+- IV.2. Critique de l'existant
+- IV.3. Solution
+
+
+
+- V. Conclusion
+
+
+**Chapitre II : Analyse et spécification des besoins**
+
+- I. Introduction
+- II. Architecture logicielle
+- III. Méthodologie de conception UML
+- IV. Capture des besoins
+
+- IV.1. Besoins fonctionnels
+
+- IV.1.1. Modélisation du diagramme de cas d'utilisation
+- IV.1.2. Raffinement du cas d'utilisation "S'authentifier"
+- IV.1.3. Raffinement du cas d'utilisation "Administrateur"
+- IV.1.4. Raffinement du cas d'utilisation "Employé"
+- IV.1.5. Diagrammes de séquence
+- IV.1.6. Diagramme de classes
+- IV.1.7. Modèle de données
+
+
+
+- IV.2. Besoins non fonctionnels
+
+
+
+- V. Conclusion
+
+
+**Chapitre III : Réalisation et implémentation**
+
+- I. Environnement de travail
+
+- I.1. Environnement matériel
+- I.2. Environnement logiciel
+
+
+
+- II. Interfaces de l'application
+
+- II.1. Interface d'authentification
+- II.2. Interface Admin
+- II.3. Interface utilisateur
+- II.4. Gestionnaire d'interface
+
+
+
+- III. Implémentation des fonctionnalités clés
+
+- III.1. Authentification et gestion des utilisateurs
+- III.2. Gestion des départements
+- III.3. Suivi des présences
+- III.4. Gestion des congés
+- III.5. Gestion des tâches
+- III.6. Messagerie interne
+- III.7. Assistant IA
+- III.8. Rapports et analyses
+
+
+
+- IV. Tests et validation
+
+- IV.1. Tests fonctionnels
+- IV.2. Tests de performance
+- IV.3. Retours utilisateurs
+
+
+
+- V. Conclusion
+
+
+**Conclusion Générale**
+
+**Bibliographie**
+
+**Annexes**
+
+- Annexe 1 : Structure du code source
+- Annexe 2 : Guide d'installation
+- Annexe 3 : Guide d'utilisation
+
+
+---
+
+# Chapitre I : Présentation du contexte général du projet et étude de l'existant
+
+## I. Introduction
+
+Dans un contexte économique de plus en plus compétitif, les entreprises cherchent constamment à optimiser leurs processus internes pour gagner en efficacité et réduire leurs coûts opérationnels. La gestion des ressources humaines (GRH) représente un enjeu stratégique majeur pour toute organisation, quelle que soit sa taille ou son secteur d'activité. Une gestion efficace du capital humain permet non seulement d'améliorer la productivité, mais aussi de favoriser l'engagement des employés et de réduire le taux de rotation du personnel.
+
+Traditionnellement, la gestion des ressources humaines impliquait de nombreux processus manuels et papier, rendant les tâches administratives chronophages et sujettes aux erreurs. Avec l'avènement des technologies de l'information, les systèmes de gestion des ressources humaines (SIRH) ont émergé comme une solution permettant d'automatiser et de rationaliser ces processus. Ces systèmes couvrent généralement un large éventail de fonctionnalités, allant de la gestion des dossiers du personnel à la planification des congés, en passant par le suivi des présences et l'évaluation des performances.
+
+Parallèlement, le suivi du temps de travail est devenu un aspect crucial de la gestion d'entreprise, permettant non seulement de se conformer aux réglementations du travail, mais aussi d'optimiser l'allocation des ressources et d'améliorer la planification des projets. Les systèmes de suivi du temps permettent aux employés d'enregistrer leurs heures de travail, aux gestionnaires de valider ces enregistrements, et aux départements des ressources humaines et de la comptabilité d'utiliser ces données pour la paie et la facturation.
+
+L'intégration de ces deux aspects - gestion des ressources humaines et suivi du temps - dans un système unifié présente de nombreux avantages, notamment une meilleure cohérence des données, une réduction des tâches administratives redondantes, et une vision plus complète et précise des activités de l'entreprise.
+
+C'est dans ce contexte que s'inscrit notre projet de fin d'études, qui vise à concevoir et développer un système intégré de gestion des ressources humaines et de suivi du temps. Ce système a pour objectif de répondre aux besoins spécifiques de l'entreprise, en tenant compte de ses processus existants, de sa culture organisationnelle, et de ses objectifs stratégiques.
+
+## II. Cadre du projet
+
+Ce projet de fin d'études s'inscrit dans le cadre de l'obtention du diplôme d'ingénieur en informatique, spécialité développement de systèmes d'information. Il a été réalisé au sein d'une entreprise de taille moyenne spécialisée dans le secteur des services informatiques, qui cherche à moderniser ses processus de gestion des ressources humaines et de suivi du temps.
+
+Le projet a été initié suite à une analyse des besoins réalisée par la direction des ressources humaines et la direction des systèmes d'information de l'entreprise. Cette analyse a mis en évidence plusieurs problématiques liées à la gestion actuelle des ressources humaines et au suivi du temps, notamment :
+
+- Des processus manuels chronophages et sujets aux erreurs
+- Une dispersion des données RH dans différents systèmes non intégrés
+- Une difficulté à obtenir une vision globale et en temps réel des activités de l'entreprise
+- Un manque d'outils d'analyse pour la prise de décision
+- Une expérience utilisateur peu satisfaisante pour les employés et les gestionnaires
+
+
+Face à ces constats, la direction a décidé de lancer un projet de développement d'un système intégré de gestion des ressources humaines et de suivi du temps, avec pour objectifs principaux :
+
+- Automatiser et rationaliser les processus RH
+- Centraliser les données RH dans un système unique
+- Améliorer la précision et la fiabilité du suivi du temps
+- Fournir des outils d'analyse et de reporting avancés
+- Offrir une expérience utilisateur intuitive et moderne
+- Faciliter la collaboration et la communication entre les différents acteurs
+
+
+Le projet a été planifié sur une durée de six mois, avec une équipe composée d'un chef de projet, d'un analyste fonctionnel, de deux développeurs (dont moi-même), et d'un testeur. La méthodologie de gestion de projet adoptée est Agile Scrum, avec des sprints de deux semaines et des revues régulières avec les parties prenantes.
+
+Mon rôle dans ce projet a été de participer à l'analyse des besoins, de concevoir l'architecture technique du système, et de développer les fonctionnalités clés, notamment le module de gestion des utilisateurs, le module de suivi des présences, et l'intégration de l'assistant IA pour l'analyse des performances.
+
+## III. Présentation de la société
+
+L'entreprise qui a accueilli ce projet de fin d'études est une société de services informatiques fondée en 2010, spécialisée dans le développement de solutions logicielles sur mesure et la prestation de services de conseil en technologies de l'information. Avec un effectif d'environ 150 employés répartis sur trois sites (siège social et deux agences régionales), l'entreprise connaît une croissance régulière depuis sa création.
+
+### Structure organisationnelle
+
+L'entreprise est organisée en plusieurs départements :
+
+- **Direction Générale** : Responsable de la stratégie globale et de la vision de l'entreprise
+- **Département des Ressources Humaines** : Chargé du recrutement, de la formation, de la gestion des carrières et de l'administration du personnel
+- **Département Commercial** : Responsable de la prospection, de la vente et de la relation client
+- **Département Technique** : Divisé en plusieurs équipes spécialisées (développement web, développement mobile, infrastructure, etc.)
+- **Département Qualité** : Garant de la qualité des livrables et de l'amélioration continue des processus
+- **Département Administratif et Financier** : En charge de la comptabilité, des finances et des aspects juridiques
+
+
+### Culture d'entreprise
+
+L'entreprise se distingue par une culture d'innovation et d'excellence technique, tout en mettant l'accent sur le bien-être et le développement professionnel de ses collaborateurs. Elle valorise la collaboration, l'autonomie et la responsabilisation de chacun.
+
+### Défis actuels
+
+Malgré sa réussite, l'entreprise fait face à plusieurs défis :
+
+- Une croissance rapide qui met à l'épreuve ses processus de gestion des ressources humaines
+- Une concurrence accrue qui nécessite une optimisation constante de ses coûts et de sa productivité
+- Une diversification de ses activités qui complexifie le suivi et l'allocation des ressources
+- Une évolution des attentes des employés en matière d'outils de travail et d'expérience utilisateur
+
+
+C'est dans ce contexte que l'entreprise a décidé de moderniser son système de gestion des ressources humaines et de suivi du temps, afin de soutenir sa croissance et de maintenir sa compétitivité.
+
+## IV. Étude de l'existant
+
+### IV.1. Descriptif de l'existant
+
+Avant la mise en place du nouveau système, l'entreprise utilisait une combinaison de solutions disparates pour gérer ses ressources humaines et suivre le temps de travail de ses employés :
+
+#### Gestion des ressources humaines
+
+- **Dossiers du personnel** : Gérés principalement via des fichiers Excel et des dossiers papier
+- **Recrutement** : Suivi via un tableur partagé et des échanges d'emails
+- **Gestion des congés** : Demandes par email, validation manuelle et suivi dans un tableur
+- **Évaluation des performances** : Formulaires papier remplis lors des entretiens annuels
+- **Formation** : Planification et suivi manuel des formations
+
+
+#### Suivi du temps
+
+- **Feuilles de temps** : Remplies manuellement par les employés dans un fichier Excel partagé
+- **Validation** : Effectuée par les managers via email ou lors de réunions hebdomadaires
+- **Facturation** : Extraction manuelle des données de temps pour la facturation client
+- **Reporting** : Création manuelle de rapports à partir des données de temps
+
+
+#### Communication interne
+
+- **Emails** : Principal canal de communication pour les questions RH
+- **Réunions** : Organisées régulièrement pour discuter des problématiques RH
+- **Intranet** : Utilisé principalement pour partager des documents et des annonces
+
+
+#### Analyse et reporting
+
+- **Rapports manuels** : Créés ponctuellement à partir des données disponibles
+- **Tableaux de bord** : Mis à jour manuellement à partir de différentes sources de données
+- **Prévisions** : Basées sur l'expérience et l'intuition plutôt que sur des données précises
+
+
+### IV.2. Critique de l'existant
+
+L'analyse du système existant a révélé plusieurs problématiques qui limitent l'efficacité et la performance de l'entreprise :
+
+#### Problèmes liés à la dispersion des données
+
+- **Incohérence des données** : Les informations étant réparties dans différents systèmes, des incohérences apparaissent fréquemment
+- **Duplication des efforts** : Les mêmes informations doivent être saisies plusieurs fois dans différents systèmes
+- **Difficulté d'accès** : L'accès aux informations nécessite souvent de consulter plusieurs sources
+
+
+#### Problèmes liés aux processus manuels
+
+- **Temps consacré aux tâches administratives** : Les équipes RH et les managers passent un temps considérable sur des tâches administratives à faible valeur ajoutée
+- **Risques d'erreurs** : Les processus manuels sont sujets aux erreurs humaines
+- **Délais de traitement** : Les demandes (congés, attestations, etc.) peuvent prendre plusieurs jours à être traitées
+
+
+#### Problèmes liés au suivi du temps
+
+- **Fiabilité des données** : Les saisies manuelles sont souvent approximatives ou incomplètes
+- **Retards de saisie** : Les employés remplissent souvent leurs feuilles de temps en retard, ce qui affecte la facturation et le reporting
+- **Difficulté de validation** : Les managers n'ont pas de vue claire sur les activités de leurs équipes
+
+
+#### Problèmes liés à l'analyse et au reporting
+
+- **Manque de visibilité en temps réel** : Les données n'étant pas centralisées, il est difficile d'avoir une vision globale et à jour
+- **Difficulté à produire des analyses** : La création de rapports nécessite un travail manuel important
+- **Prise de décision retardée** : Le manque d'informations précises et à jour retarde la prise de décision
+
+
+#### Problèmes liés à l'expérience utilisateur
+
+- **Interfaces peu conviviales** : Les outils existants (Excel, emails) ne sont pas optimisés pour les tâches RH
+- **Accessibilité limitée** : Les systèmes ne sont pas accessibles à distance ou sur mobile
+- **Manque de transparence** : Les employés ont peu de visibilité sur leurs données RH (solde de congés, évaluations, etc.)
+
+
+### IV.3. Solution
+
+Face aux problématiques identifiées, la solution proposée est un système intégré de gestion des ressources humaines et de suivi du temps, développé sur mesure pour répondre aux besoins spécifiques de l'entreprise. Ce système, basé sur la stack MERN (MongoDB, Express, React, Node.js), offre une architecture moderne, évolutive et sécurisée.
+
+#### Architecture générale
+
+Le système est conçu selon une architecture client-serveur, avec :
+
+- **Frontend** : Application web responsive développée avec React, offrant une interface utilisateur intuitive et moderne
+- **Backend** : API RESTful développée avec Node.js et Express, assurant la logique métier et l'accès aux données
+- **Base de données** : MongoDB, une base de données NoSQL flexible et performante, adaptée aux besoins évolutifs de l'entreprise
+- **Intégrations** : Connexions avec des services tiers (email, calendrier, etc.) via des API
+
+
+#### Modules fonctionnels
+
+Le système comprend plusieurs modules interconnectés :
+
+- **Gestion des utilisateurs et des départements** : Création et gestion des profils utilisateurs, des rôles et des permissions, organisation des départements
+- **Suivi des présences** : Enregistrement et validation des heures de travail, gestion des horaires, reporting
+- **Gestion des congés** : Demande, validation et suivi des congés, calcul automatique des soldes
+- **Gestion des tâches** : Attribution, suivi et évaluation des tâches, gestion des projets
+- **Messagerie interne** : Communication entre les utilisateurs, notifications, partage de documents
+- **Assistant IA** : Analyse des performances, recommandations personnalisées, automatisation de tâches
+- **Rapports et analyses** : Tableaux de bord personnalisables, rapports prédéfinis, export de données
+
+
+#### Avantages de la solution
+
+La solution proposée offre de nombreux avantages par rapport au système existant :
+
+- **Centralisation des données** : Toutes les informations RH sont stockées dans un système unique, garantissant leur cohérence et leur accessibilité
+- **Automatisation des processus** : Les tâches répétitives sont automatisées, réduisant le temps consacré aux activités administratives
+- **Amélioration de la précision** : Les processus automatisés réduisent les risques d'erreurs humaines
+- **Gain de temps** : Les demandes sont traitées plus rapidement, les validations sont simplifiées
+- **Meilleure visibilité** : Les tableaux de bord et les rapports offrent une vision claire et en temps réel des activités
+- **Expérience utilisateur améliorée** : L'interface intuitive et responsive facilite l'utilisation du système
+- **Prise de décision facilitée** : Les données précises et à jour permettent une prise de décision plus éclairée
+- **Évolutivité** : L'architecture modulaire permet d'ajouter facilement de nouvelles fonctionnalités
+
+
+## V. Conclusion
+
+L'étude du contexte général et de l'existant a permis de mettre en évidence les problématiques auxquelles l'entreprise est confrontée en matière de gestion des ressources humaines et de suivi du temps. La solution proposée, un système intégré développé sur mesure avec la stack MERN, répond à ces problématiques en offrant une centralisation des données, une automatisation des processus, et une amélioration de l'expérience utilisateur.
+
+Le chapitre suivant détaillera l'analyse et la spécification des besoins, en présentant l'architecture logicielle, la méthodologie de conception, et les différents diagrammes UML qui ont guidé le développement du système.
+
+---
+
+# Chapitre II : Analyse et spécification des besoins
+
+## I. Introduction
+
+L'analyse et la spécification des besoins constituent une étape cruciale dans le développement d'un système d'information. Cette phase permet de définir précisément ce que le système doit faire, comment il doit le faire, et quelles contraintes il doit respecter. Une analyse rigoureuse des besoins est essentielle pour garantir que le système final réponde aux attentes des utilisateurs et s'intègre harmonieusement dans les processus de l'entreprise.
+
+Dans ce chapitre, nous présenterons l'architecture logicielle du système, la méthodologie de conception adoptée, et les différents diagrammes UML qui ont été élaborés pour modéliser les besoins fonctionnels et non fonctionnels. Cette modélisation servira de base pour la phase de développement, en fournissant une vision claire et structurée du système à réaliser.
+
+L'objectif de cette analyse est de traduire les besoins exprimés par les différentes parties prenantes (direction, département RH, managers, employés) en spécifications techniques précises, tout en tenant compte des contraintes organisationnelles, techniques et budgétaires de l'entreprise.
+
+## II. Architecture logicielle
+
+L'architecture logicielle du système de gestion RH et de suivi du temps a été conçue pour répondre aux exigences de modularité, d'évolutivité et de performance. Nous avons opté pour une architecture en couches, qui permet une séparation claire des responsabilités et facilite la maintenance et l'évolution du système.
+
+### Architecture en couches
+
+Le système est structuré en quatre couches principales :
+
+1. **Couche Présentation** : Interface utilisateur développée avec React, responsable de l'affichage des données et de l'interaction avec l'utilisateur
+2. **Couche Application** : API RESTful développée avec Express, qui expose les fonctionnalités du système et gère les requêtes des clients
+3. **Couche Métier** : Implémentée en Node.js, cette couche contient la logique métier et les règles de gestion
+4. **Couche Données** : Gérée par MongoDB, cette couche est responsable du stockage et de la récupération des données
+
+
+Cette architecture présente plusieurs avantages :
+
+- **Séparation des préoccupations** : Chaque couche a une responsabilité bien définie, ce qui facilite le développement et la maintenance
+- **Indépendance** : Les modifications apportées à une couche ont un impact minimal sur les autres couches
+- **Réutilisabilité** : Les composants peuvent être réutilisés dans différentes parties du système
+- **Testabilité** : Chaque couche peut être testée indépendamment des autres
+
+
+### Architecture MERN Stack
+
+Le système est basé sur la stack MERN (MongoDB, Express, React, Node.js), qui est une combinaison de technologies open-source largement adoptée pour le développement d'applications web modernes :
+
+- **MongoDB** : Base de données NoSQL orientée documents, qui offre une grande flexibilité dans la modélisation des données et une excellente scalabilité
+- **Express** : Framework web minimaliste pour Node.js, qui simplifie le développement d'API RESTful
+- **React** : Bibliothèque JavaScript pour la construction d'interfaces utilisateur, qui permet de créer des composants réutilisables et de gérer efficacement l'état de l'application
+- **Node.js** : Environnement d'exécution JavaScript côté serveur, qui permet d'utiliser le même langage (JavaScript) pour le frontend et le backend
+
+
+Les avantages de la stack MERN pour ce projet sont nombreux :
+
+- **JavaScript partout** : L'utilisation de JavaScript à tous les niveaux (frontend, backend, base de données avec les requêtes en JSON) simplifie le développement et facilite la communication entre les différentes parties du système
+- **Performance** : Node.js est connu pour sa performance et sa capacité à gérer un grand nombre de connexions simultanées, ce qui est important pour un système utilisé par l'ensemble des employés de l'entreprise
+- **Flexibilité** : MongoDB permet de faire évoluer facilement le modèle de données en fonction des besoins, sans nécessiter de migrations complexes
+- **Écosystème riche** : Les quatre technologies de la stack MERN bénéficient d'écosystèmes riches et actifs, avec de nombreuses bibliothèques et outils disponibles
+
+
+### Architecture des composants
+
+Au niveau de la couche présentation, nous avons adopté une architecture basée sur les composants, qui est au cœur de React. Les composants sont organisés selon une hiérarchie qui reflète la structure de l'interface utilisateur :
+
+- **Composants de page** : Représentent les différentes pages de l'application (tableau de bord, gestion des utilisateurs, etc.)
+- **Composants de layout** : Définissent la structure générale des pages (en-tête, barre latérale, pied de page)
+- **Composants fonctionnels** : Implémentent des fonctionnalités spécifiques (formulaires, tableaux, graphiques)
+- **Composants UI** : Éléments d'interface réutilisables (boutons, champs de saisie, modales)
+
+
+Cette approche favorise la réutilisabilité et la maintenabilité du code, tout en permettant une expérience utilisateur cohérente à travers l'application.
+
+### Architecture de communication
+
+La communication entre le frontend et le backend est assurée par des API RESTful, qui suivent les principes de l'architecture REST (Representational State Transfer) :
+
+- **Ressources identifiées par des URL** : Chaque ressource (utilisateur, département, tâche, etc.) est accessible via une URL spécifique
+- **Méthodes HTTP standard** : Utilisation des méthodes GET, POST, PUT, DELETE pour les opérations CRUD (Create, Read, Update, Delete)
+- **Représentation des ressources** : Les données sont échangées au format JSON
+- **Communication sans état** : Chaque requête contient toutes les informations nécessaires à son traitement
+
+
+Pour l'authentification et l'autorisation, nous utilisons des tokens JWT (JSON Web Tokens), qui permettent une gestion sécurisée des sessions utilisateur sans nécessiter de stockage côté serveur.
+
+## III. Méthodologie de conception UML
+
+Pour la conception du système, nous avons adopté la méthodologie UML (Unified Modeling Language), qui est un langage de modélisation graphique standardisé largement utilisé dans l'industrie du logiciel. UML nous a permis de représenter visuellement les différents aspects du système, facilitant ainsi la communication entre les membres de l'équipe et avec les parties prenantes.
+
+### Approche de modélisation
+
+Notre approche de modélisation a suivi les principes de la conception orientée objet, en mettant l'accent sur :
+
+- **L'abstraction** : Identification des concepts essentiels du domaine et de leurs caractéristiques
+- **L'encapsulation** : Regroupement des données et des comportements associés dans des entités cohérentes
+- **L'héritage** : Établissement de relations de généralisation/spécialisation entre les concepts
+- **Le polymorphisme** : Définition d'interfaces communes pour des comportements similaires
+
+
+### Types de diagrammes utilisés
+
+Dans le cadre de ce projet, nous avons utilisé plusieurs types de diagrammes UML pour modéliser différents aspects du système :
+
+- **Diagrammes de cas d'utilisation** : Pour représenter les fonctionnalités du système du point de vue des utilisateurs
+- **Diagrammes de séquence** : Pour modéliser les interactions entre les objets dans le temps
+- **Diagrammes de classes** : Pour décrire la structure statique du système
+- **Diagrammes d'activité** : Pour représenter les flux de travail et les processus métier
+
+
+Ces diagrammes ont été élaborés de manière itérative, en collaboration avec les parties prenantes, pour garantir leur adéquation avec les besoins réels de l'entreprise.
+
+### Outils de modélisation
+
+Pour la création des diagrammes UML, nous avons utilisé des outils spécialisés qui offrent des fonctionnalités avancées de modélisation et de collaboration :
+
+- **Visual Paradigm** : Pour les diagrammes de cas d'utilisation et de classes
+- **Draw.io** : Pour les diagrammes de séquence et d'activité
+- **Lucidchart** : Pour les diagrammes de déploiement et de composants
+
+
+Ces outils nous ont permis de maintenir une documentation visuelle à jour tout au long du projet, facilitant ainsi la communication et la prise de décision.
+
+## IV. Capture des besoins
+
+La capture des besoins a été réalisée à travers une série d'entretiens et d'ateliers avec les différentes parties prenantes du projet : direction, département RH, managers et employés. Cette approche participative a permis d'identifier les besoins réels des utilisateurs et de s'assurer que le système répondrait à leurs attentes.
+
+### IV.1. Besoins fonctionnels
+
+Les besoins fonctionnels décrivent ce que le système doit faire, c'est-à-dire les fonctionnalités qu'il doit offrir aux utilisateurs. Ils ont été regroupés par module et par type d'utilisateur.
+
+#### Acteurs du système
+
+Le système interagit avec plusieurs types d'utilisateurs, chacun ayant des besoins et des permissions spécifiques :
+
+- **Administrateur** : Responsable de la configuration du système et de la gestion des utilisateurs et des départements
+- **Responsable RH** : Chargé de la gestion des dossiers du personnel, des congés et des évaluations
+- **Manager** : Responsable de la validation des congés et des feuilles de temps, de l'attribution des tâches et de l'évaluation des performances
+- **Employé** : Utilisateur standard qui peut consulter ses informations personnelles, demander des congés, enregistrer son temps de travail et gérer ses tâches
+- **Assistant IA** : Acteur système qui analyse les données et fournit des recommandations
+
+
+#### Besoins par module
+
+##### Module d'authentification et de gestion des utilisateurs
+
+- Inscription et création de compte
+- Authentification sécurisée (login/mot de passe, authentification à deux facteurs)
+- Gestion des profils utilisateurs (création, modification, désactivation)
+- Gestion des rôles et des permissions
+- Réinitialisation de mot de passe
+- Gestion des départements et des équipes
+
+
+##### Module de suivi des présences
+
+- Enregistrement des heures d'arrivée et de départ
+- Saisie des temps passés sur différentes activités
+- Validation des feuilles de temps par les managers
+- Génération de rapports de présence
+- Calcul automatique des heures supplémentaires
+- Visualisation des historiques de présence
+
+
+##### Module de gestion des congés
+
+- Demande de congés par les employés
+- Validation des demandes par les managers
+- Calcul automatique des soldes de congés
+- Visualisation du calendrier des congés
+- Notification des congés à venir
+- Génération de rapports sur les congés
+
+
+##### Module de gestion des tâches
+
+- Création et attribution de tâches
+- Suivi de l'avancement des tâches
+- Définition de priorités et d'échéances
+- Commentaires et discussions sur les tâches
+- Notification des tâches en retard ou à venir
+- Génération de rapports sur les tâches
+
+
+##### Module de messagerie interne
+
+- Envoi et réception de messages entre utilisateurs
+- Création de groupes de discussion
+- Partage de fichiers et de documents
+- Notification des nouveaux messages
+- Recherche dans l'historique des messages
+- Statut de lecture des messages
+
+
+##### Module d'assistant IA
+
+- Analyse des performances individuelles et collectives
+- Recommandations personnalisées pour l'amélioration des performances
+- Détection des tendances et des anomalies
+- Prédiction des besoins en ressources
+- Automatisation de tâches répétitives
+- Réponses aux questions fréquentes
+
+
+##### Module de rapports et d'analyses
+
+- Tableaux de bord personnalisables
+- Rapports prédéfinis sur différents aspects (présences, congés, performances)
+- Export des données au format Excel, PDF, CSV
+- Visualisations graphiques (diagrammes, graphiques)
+- Filtres et recherche avancée
+- Planification de rapports automatiques
+
+
+#### IV.1.1. Modélisation du diagramme de cas d'utilisation
+
+Le diagramme de cas d'utilisation global représente l'ensemble des fonctionnalités du système et leurs relations avec les différents acteurs. Il offre une vue d'ensemble des interactions entre les utilisateurs et le système.
+
+Ce diagramme met en évidence les principales fonctionnalités du système :
+
+- Authentification et gestion des profils
+- Gestion des utilisateurs et des départements
+- Suivi des présences
+- Gestion des congés
+- Gestion des tâches
+- Messagerie interne
+- Assistant IA
+- Rapports et analyses
+
+
+#### IV.1.2. Raffinement du cas d'utilisation "S'authentifier"
+
+Le cas d'utilisation "S'authentifier" est un cas d'utilisation central, car il conditionne l'accès aux autres fonctionnalités du système. Il comprend plusieurs scénarios :
+
+- **Authentification standard** : L'utilisateur se connecte avec son identifiant et son mot de passe
+- **Authentification avec Google** : L'utilisateur se connecte via son compte Google
+- **Mot de passe oublié** : L'utilisateur demande une réinitialisation de son mot de passe
+- **Première connexion** : L'utilisateur complète son profil lors de sa première connexion
+
+
+**Description détaillée du cas d'utilisation "S'authentifier"**
+
+- **Acteur principal** : Utilisateur (tous types)
+- **Préconditions** : L'utilisateur possède un compte dans le système
+- **Postconditions** : L'utilisateur est authentifié et a accès aux fonctionnalités correspondant à son rôle
+- **Scénario principal** :
+
+1. L'utilisateur accède à la page de connexion
+2. L'utilisateur saisit son identifiant et son mot de passe
+3. Le système vérifie les informations d'identification
+4. Le système authentifie l'utilisateur et le redirige vers la page d'accueil
+
+
+
+- **Scénarios alternatifs** :
+
+- Authentification avec Google
+- Mot de passe oublié
+- Première connexion
+
+
+
+- **Exceptions** :
+
+- Identifiants incorrects
+- Compte désactivé
+- Problème technique
+
+
+
+
+
+#### IV.1.3. Raffinement du cas d'utilisation "Administrateur"
+
+Le cas d'utilisation "Administrateur" regroupe les fonctionnalités spécifiques à l'administrateur du système, qui est responsable de la configuration globale et de la gestion des utilisateurs et des départements.
+
+**Description détaillée du cas d'utilisation "Gérer les utilisateurs"**
+
+- **Acteur principal** : Administrateur
+- **Préconditions** : L'administrateur est authentifié
+- **Postconditions** : Les modifications sur les utilisateurs sont enregistrées
+- **Scénario principal** :
+
+1. L'administrateur accède à la page de gestion des utilisateurs
+2. L'administrateur visualise la liste des utilisateurs
+3. L'administrateur peut créer, modifier ou désactiver un utilisateur
+4. Le système enregistre les modifications
+
+
+
+- **Scénarios alternatifs** :
+
+- Attribution de rôles et de permissions
+- Réinitialisation du mot de passe d'un utilisateur
+- Affectation d'un utilisateur à un département
+
+
+
+- **Exceptions** :
+
+- Informations utilisateur incomplètes ou invalides
+- Utilisateur déjà existant
+- Problème technique
+
+
+
+
+
+#### IV.1.4. Raffinement du cas d'utilisation "Employé"
+
+Le cas d'utilisation "Employé" regroupe les fonctionnalités accessibles à tous les employés de l'entreprise, quel que soit leur rôle spécifique.
+
+**Description détaillée du cas d'utilisation "Gérer les présences"**
+
+- **Acteur principal** : Employé
+- **Préconditions** : L'employé est authentifié
+- **Postconditions** : Les enregistrements de présence sont sauvegardés
+- **Scénario principal** :
+
+1. L'employé accède à la page de suivi des présences
+2. L'employé enregistre son heure d'arrivée
+3. L'employé saisit les temps passés sur différentes activités
+4. L'employé enregistre son heure de départ
+5. Le système calcule automatiquement le temps de travail total
+
+
+
+- **Scénarios alternatifs** :
+
+- Modification d'un enregistrement existant
+- Visualisation de l'historique des présences
+- Export des données de présence
+
+
+
+- **Exceptions** :
+
+- Chevauchement d'horaires
+- Dépassement du temps de travail maximal
+- Problème technique
+
+
+
+
+
+#### IV.1.5. Diagrammes de séquence
+
+Les diagrammes de séquence permettent de modéliser les interactions entre les différents objets du système dans le temps. Ils sont particulièrement utiles pour comprendre le flux d'exécution des fonctionnalités complexes.
+
+##### Diagramme de séquence "Authentification"
+
+Ce diagramme illustre le processus d'authentification d'un utilisateur, depuis la saisie de ses identifiants jusqu'à son accès au système. Il met en évidence les interactions entre le navigateur de l'utilisateur, le serveur d'authentification, et la base de données.
+
+##### Diagramme de séquence "Gestion des utilisateurs"
+
+Ce diagramme représente le processus de création, modification et désactivation d'un utilisateur par l'administrateur. Il montre les interactions entre l'interface administrateur, le serveur d'API, et la base de données.
+
+##### Diagramme de séquence "Gestion des présences"
+
+Ce diagramme illustre le processus d'enregistrement des heures de travail par un employé et de validation par un manager. Il met en évidence les interactions entre l'interface employé, l'interface manager, le serveur d'API, et la base de données.
+
+##### Diagramme de séquence "Gestion des congés"
+
+Ce diagramme représente le processus de demande de congés par un employé, de validation par un manager, et de mise à jour des soldes de congés. Il montre les interactions entre l'interface employé, l'interface manager, le serveur d'API, et la base de données.
+
+##### Diagramme de séquence "Gestion des tâches"
+
+Ce diagramme illustre le processus de création, d'attribution et de suivi d'une tâche. Il met en évidence les interactions entre l'interface manager, l'interface employé, le serveur d'API, et la base de données.
+
+#### IV.1.6. Diagramme de classes
+
+Le diagramme de classes représente la structure statique du système, en décrivant les classes, leurs attributs, leurs méthodes, et les relations entre elles. Il constitue la base de l'implémentation du modèle de données et des objets métier.
+
+##### Classes principales
+
+- **User** : Représente un utilisateur du système, avec ses informations personnelles et ses identifiants de connexion
+- **Department** : Représente un département de l'entreprise, avec son nom, sa description et son responsable
+- **Attendance** : Représente un enregistrement de présence, avec la date, les heures d'arrivée et de départ, et les activités
+- **Leave** : Représente une demande de congé, avec le type de congé, les dates de début et de fin, et le statut
+- **Task** : Représente une tâche, avec son titre, sa description, sa priorité, son échéance et son statut
+- **Message** : Représente un message échangé entre utilisateurs, avec son contenu, sa date d'envoi et son statut
+- **AIConversation** : Représente une conversation avec l'assistant IA, avec les messages échangés et le contexte
+- **Report** : Représente un rapport généré par le système, avec son type, ses paramètres et sa date de génération
+
+
+##### Relations entre classes
+
+- **User - Department** : Un utilisateur appartient à un département, un département peut avoir plusieurs utilisateurs
+- **User - Attendance** : Un utilisateur peut avoir plusieurs enregistrements de présence, un enregistrement de présence appartient à un utilisateur
+- **User - Leave** : Un utilisateur peut faire plusieurs demandes de congé, une demande de congé est faite par un utilisateur
+- **User - Task** : Un utilisateur peut être assigné à plusieurs tâches, une tâche peut être assignée à plusieurs utilisateurs
+- **User - Message** : Un utilisateur peut envoyer et recevoir plusieurs messages, un message est envoyé par un utilisateur et peut être reçu par plusieurs utilisateurs
+- **User - AIConversation** : Un utilisateur peut avoir plusieurs conversations avec l'assistant IA, une conversation appartient à un utilisateur
+- **User - Report** : Un utilisateur peut générer plusieurs rapports, un rapport est généré par un utilisateur
+
+
+#### IV.1.7. Modèle de données
+
+Le modèle de données définit la structure des données stockées dans la base de données MongoDB. Contrairement aux bases de données relationnelles, MongoDB utilise un modèle de données orienté documents, ce qui permet une grande flexibilité dans la modélisation.
+
+##### Collection User
+
+```javascript
+{
+  _id: ObjectId,
+  firstName: String,
+  lastName: String,
+  email: String,
+  password: String,
+  role: String,
+  department: ObjectId,
+  position: String,
+  hireDate: Date,
+  birthDate: Date,
+  address: {
+    street: String,
+    city: String,
+    state: String,
+    zipCode: String,
+    country: String
+  },
+  phone: String,
+  emergencyContact: {
+    name: String,
+    relationship: String,
+    phone: String
+  },
+  profileImage: String,
+  isActive: Boolean,
+  lastLogin: Date,
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+##### Collection Department
+
+```javascript
+{
+  _id: ObjectId,
+  name: String,
+  description: String,
+  manager: ObjectId,
+  parentDepartment: ObjectId,
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+##### Collection Attendance
+
+```javascript
+{
+  _id: ObjectId,
+  user: ObjectId,
+  date: Date,
+  checkIn: Date,
+  checkOut: Date,
+  activities: [
+    {
+      description: String,
+      duration: Number,
+      project: String
+    }
+  ],
+  totalHours: Number,
+  status: String,
+  notes: String,
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+##### Collection Leave
+
+```javascript
+{
+  _id: ObjectId,
+  user: ObjectId,
+  type: String,
+  startDate: Date,
+  endDate: Date,
+  duration: Number,
+  reason: String,
+  status: String,
+  approvedBy: ObjectId,
+  approvalDate: Date,
+  attachments: [String],
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+##### Collection Task
+
+```javascript
+{
+  _id: ObjectId,
+  title: String,
+  description: String,
+  assignedTo: [ObjectId],
+  assignedBy: ObjectId,
+  project: String,
+  priority: String,
+  status: String,
+  dueDate: Date,
+  completedDate: Date,
+  attachments: [String],
+  comments: [
+    {
+      user: ObjectId,
+      text: String,
+      date: Date
+    }
+  ],
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+##### Collection Message
+
+```javascript
+{
+  _id: ObjectId,
+  sender: ObjectId,
+  recipients: [ObjectId],
+  subject: String,
+  content: String,
+  attachments: [String],
+  isRead: [
+    {
+      user: ObjectId,
+      readAt: Date
+    }
+  ],
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+##### Collection AIConversation
+
+```javascript
+{
+  _id: ObjectId,
+  user: ObjectId,
+  title: String,
+  messages: [
+    {
+      role: String,
+      content: String,
+      timestamp: Date
+    }
+  ],
+  context: Object,
+  createdAt: Date,
+  updatedAt: Date
+}
+```
+
+### IV.2. Besoins non fonctionnels
+
+Les besoins non fonctionnels définissent les critères de qualité du système, c'est-à-dire comment le système doit fonctionner, plutôt que ce qu'il doit faire. Ils concernent des aspects tels que la performance, la sécurité, la fiabilité, et l'expérience utilisateur.
+
+#### Performance
+
+- **Temps de réponse** : Le système doit répondre aux requêtes utilisateur en moins de 2 secondes dans des conditions normales
+- **Capacité** : Le système doit pouvoir gérer jusqu'à 500 utilisateurs simultanés sans dégradation notable des performances
+- **Scalabilité** : Le système doit pouvoir être facilement étendu pour accommoder une croissance du nombre d'utilisateurs et du volume de données
+
+
+#### Sécurité
+
+- **Authentification** : Le système doit implémenter une authentification sécurisée, avec support de l'authentification à deux facteurs
+- **Autorisation** : Le système doit contrôler l'accès aux fonctionnalités et aux données en fonction des rôles et des permissions des utilisateurs
+- **Protection des données** : Les données sensibles (mots de passe, informations personnelles) doivent être cryptées
+- **Audit** : Le système doit enregistrer les actions importantes des utilisateurs pour permettre un audit en cas de besoin
+
+
+#### Fiabilité
+
+- **Disponibilité** : Le système doit être disponible 99,9% du temps (hors maintenance planifiée)
+- **Tolérance aux pannes** : Le système doit pouvoir continuer à fonctionner en cas de défaillance d'un composant
+- **Sauvegarde** : Les données doivent être sauvegardées régulièrement, avec possibilité de restauration en cas de besoin
+
+
+#### Expérience utilisateur
+
+- **Ergonomie** : L'interface utilisateur doit être intuitive et facile à utiliser, même pour des utilisateurs non techniques
+- **Responsive design** : L'interface doit s'adapter à différentes tailles d'écran (ordinateur, tablette, smartphone)
+- **Accessibilité** : Le système doit respecter les normes d'accessibilité WCAG 2.1 niveau AA
+- **Multilingue** : Le système doit supporter plusieurs langues (français, anglais)
+
+
+#### Maintenance et évolutivité
+
+- **Modularité** : Le système doit être conçu de manière modulaire pour faciliter les modifications et les extensions
+- **Documentation** : Le code et l'architecture doivent être bien documentés pour faciliter la maintenance
+- **Tests** : Le système doit être couvert par des tests automatisés (unitaires, d'intégration, fonctionnels)
+- **Déploiement** : Le système doit pouvoir être déployé facilement dans différents environnements (développement, test, production)
+
+
+#### Conformité
+
+- **RGPD** : Le système doit être conforme au Règlement Général sur la Protection des Données
+- **Droit du travail** : Le système doit respecter les réglementations en vigueur concernant le temps de travail et les congés
+- **Normes techniques** : Le système doit respecter les normes et standards techniques pertinents (HTTP, REST, JSON, etc.)
+
+
+## V. Conclusion
+
+L'analyse et la spécification des besoins ont permis de définir précisément ce que le système de gestion RH et de suivi du temps doit faire et comment il doit le faire. Les diagrammes UML (cas d'utilisation, séquence, classes) ont fourni une représentation visuelle claire des fonctionnalités et de la structure du système, facilitant ainsi la communication entre les membres de l'équipe et avec les parties prenantes.
+
+Le modèle de données MongoDB a été conçu pour offrir la flexibilité nécessaire à l'évolution du système, tout en garantissant la cohérence et l'intégrité des données. Les besoins non fonctionnels ont défini les critères de qualité que le système doit respecter, notamment en termes de performance, de sécurité, de fiabilité et d'expérience utilisateur.
+
+Cette phase d'analyse et de spécification constitue une base solide pour la phase de développement, en fournissant une vision claire et structurée du système à réaliser. Le chapitre suivant détaillera la réalisation et l'implémentation du système, en présentant l'environnement de travail, les interfaces de l'application, et les fonctionnalités clés.
+
+---
+
+# Chapitre III : Réalisation et implémentation
+
+## I. Environnement de travail
+
+La réalisation du système de gestion RH et de suivi du temps a nécessité la mise en place d'un environnement de travail adapté, comprenant à la fois des ressources matérielles et logicielles. Cet environnement a été conçu pour faciliter le développement, les tests et le déploiement du système.
+
+### I.1. Environnement matériel
+
+L'environnement matériel utilisé pour le développement et le déploiement du système comprend :
+
+#### Postes de développement
+
+- **Ordinateurs portables** : MacBook Pro et Dell XPS 15, équipés de processeurs multi-cœurs et de mémoire RAM suffisante pour faire fonctionner les environnements de développement et les outils de virtualisation
+- **Écrans externes** : Moniteurs 27 pouces pour améliorer la productivité des développeurs
+- **Périphériques** : Claviers, souris, casques pour les réunions en ligne
+
+
+#### Serveurs
+
+- **Serveur de développement** : Machine virtuelle hébergée sur un serveur local, utilisée pour les tests en environnement contrôlé
+- **Serveur de préproduction** : Instance cloud (AWS EC2) configurée de manière similaire à l'environnement de production
+- **Serveur de production** : Instance cloud (AWS EC2) optimisée pour les performances et la sécurité
+
+
+#### Réseau
+
+- **Réseau local** : Réseau d'entreprise sécurisé avec accès Internet haut débit
+- **VPN** : Accès sécurisé aux ressources de l'entreprise pour le travail à distance
+- **Pare-feu** : Protection contre les accès non autorisés
+
+
+### I.2. Environnement logiciel
+
+L'environnement logiciel a été choisi pour optimiser le développement, la collaboration et la qualité du code.
+
+#### Systèmes d'exploitation
+
+- **Postes de développement** : macOS et Windows 10
+- **Serveurs** : Ubuntu Server 20.04 LTS
+
+
+#### Outils de développement
+
+- **Éditeurs de code** : Visual Studio Code avec extensions pour JavaScript, React, Node.js
+- **Contrôle de version** : Git avec GitHub pour l'hébergement des dépôts
+- **Gestion de projet** : Jira pour le suivi des tâches et des sprints
+- **Communication** : Slack pour la communication d'équipe, Zoom pour les réunions
+
+
+#### Environnement de développement
+
+- **Node.js** : v14.17.0 pour l'exécution du code JavaScript côté serveur
+- **npm** : v7.20.0 pour la gestion des dépendances
+- **MongoDB** : v4.4 pour le stockage des données
+- **Docker** : v20.10 pour la conteneurisation des applications
+- **Docker Compose** : v1.29 pour la gestion des conteneurs
+
+
+#### Frameworks et bibliothèques
+
+- **Frontend** :
+
+- React v17.0.2 : Bibliothèque JavaScript pour la construction d'interfaces utilisateur
+- Redux v4.1.0 : Gestion de l'état global de l'application
+- Material-UI v5.0.0 : Composants UI prêts à l'emploi
+- Axios v0.21.1 : Client HTTP pour les requêtes API
+- Chart.js v3.5.0 : Création de graphiques et visualisations
+
+
+
+- **Backend** :
+
+- Express v4.17.1 : Framework web pour Node.js
+- Mongoose v5.13.2 : ODM (Object Document Mapper) pour MongoDB
+- JWT v8.5.1 : Gestion des tokens d'authentification
+- Multer v1.4.2 : Gestion des uploads de fichiers
+- Socket.io v4.1.3 : Communication en temps réel
+
+
+
+
+
+#### Outils de test et de qualité
+
+- **Jest** : Framework de test pour JavaScript
+- **React Testing Library** : Outils de test pour les composants React
+- **Supertest** : Tests d'API pour Express
+- **ESLint** : Analyse statique du code JavaScript
+- **Prettier** : Formatage automatique du code
+
+
+#### Outils de déploiement et d'intégration continue
+
+- **GitHub Actions** : Automatisation des workflows de CI/CD
+- **AWS CLI** : Interface en ligne de commande pour AWS
+- **PM2** : Gestionnaire de processus pour Node.js en production
+
+
+## II. Interfaces de l'application
+
+L'interface utilisateur du système a été conçue pour être intuitive, responsive et esthétique, tout en offrant une expérience utilisateur optimale. Elle a été développée avec React et Material-UI, en suivant les principes du Material Design.
+
+### II.1. Interface d'authentification
+
+L'interface d'authentification est la première page que les utilisateurs voient lorsqu'ils accèdent au système. Elle comprend :
+
+- **Formulaire de connexion** : Champs pour l'email et le mot de passe, bouton de connexion
+- **Options d'authentification alternatives** : Connexion avec Google
+- **Lien "Mot de passe oublié"** : Permet de réinitialiser son mot de passe
+- **Message d'erreur** : Affiché en cas d'échec de l'authentification
+
+
+Le design est épuré et centré sur l'action principale (se connecter), avec le logo de l'entreprise et une image d'arrière-plan représentant un environnement de travail moderne.
+
+### II.2. Interface Admin
+
+L'interface administrateur est accessible uniquement aux utilisateurs ayant le rôle d'administrateur. Elle permet de gérer les aspects globaux du système.
+
+#### Tableau de bord administrateur
+
+Le tableau de bord administrateur offre une vue d'ensemble du système, avec des widgets affichant :
+
+- **Statistiques globales** : Nombre d'utilisateurs, de départements, de tâches en cours
+- **Activité récente** : Dernières connexions, dernières modifications
+- **Alertes** : Problèmes nécessitant l'attention de l'administrateur
+
+
+#### Gestion des utilisateurs
+
+L'interface de gestion des utilisateurs permet de :
+
+- **Visualiser la liste des utilisateurs** : Avec filtres et recherche
+- **Créer un nouvel utilisateur** : Formulaire avec validation des champs
+- **Modifier un utilisateur existant** : Modification des informations, du rôle, du département
+- **Désactiver/réactiver un utilisateur** : Sans le supprimer de la base de données
+- **Réinitialiser le mot de passe** : Envoi d'un email de réinitialisation
+
+
+#### Gestion des départements
+
+L'interface de gestion des départements permet de :
+
+- **Visualiser la liste des départements** : Avec leur nom, description, responsable
+- **Créer un nouveau département** : Formulaire avec validation des champs
+- **Modifier un département existant** : Modification des informations, du responsable
+- **Visualiser les membres d'un département** : Liste des utilisateurs appartenant au département
+
+
+### II.3. Interface utilisateur
+
+L'interface utilisateur est accessible à tous les utilisateurs authentifiés, avec des fonctionnalités qui varient en fonction du rôle.
+
+#### Tableau de bord employé
+
+Le tableau de bord employé offre une vue personnalisée, avec des widgets affichant :
+
+- **Résumé des présences** : Heures travaillées aujourd'hui, cette semaine, ce mois
+- **Congés** : Solde de congés, prochains congés planifiés
+- **Tâches** : Tâches en cours, tâches à venir, tâches en retard
+- **Notifications** : Messages non lus, approbations en attente
+
+
+#### Suivi des présences
+
+L'interface de suivi des présences permet de :
+
+- **Enregistrer les heures d'arrivée et de départ** : Boutons "Check-in" et "Check-out"
+- **Saisir les activités** : Description, durée, projet associé
+- **Visualiser l'historique** : Calendrier des présences, graphiques de temps de travail
+- **Exporter les données** : Génération de rapports au format PDF ou Excel
+
+
+#### Gestion des congés
+
+L'interface de gestion des congés permet de :
+
+- **Demander un congé** : Formulaire avec type de congé, dates, motif
+- **Visualiser ses demandes** : Statut (en attente, approuvé, refusé), historique
+- **Annuler une demande** : Possible si le congé n'a pas encore commencé
+- **Consulter le calendrier des congés** : Vue d'ensemble des congés de l'équipe
+
+
+#### Gestion des tâches
+
+L'interface de gestion des tâches permet de :
+
+- **Visualiser ses tâches** : Liste avec filtres (en cours, à venir, terminées)
+- **Consulter le détail d'une tâche** : Description, échéance, priorité, commentaires
+- **Mettre à jour le statut** : Marquer comme en cours, terminée, bloquée
+- **Ajouter des commentaires** : Communication sur l'avancement ou les problèmes
+
+
+#### Messagerie
+
+L'interface de messagerie permet de :
+
+- **Envoyer des messages** : À un ou plusieurs destinataires, avec possibilité de joindre des fichiers
+- **Consulter sa boîte de réception** : Messages reçus, avec indication des non lus
+- **Organiser les messages** : Archivage, marquage comme lu/non lu
+- **Rechercher des messages** : Par expéditeur, sujet, contenu
+
+
+#### Assistant IA
+
+L'interface de l'assistant IA permet de :
+
+- **Poser des questions** : Champ de saisie pour les questions en langage naturel
+- **Consulter l'historique des conversations** : Liste des échanges précédents
+- **Recevoir des recommandations** : Suggestions personnalisées basées sur l'analyse des données
+- **Visualiser les analyses de performance** : Graphiques et indicateurs sur les performances individuelles et collectives
+
+
+#### Rapports et analyses
+
+L'interface de rapports et analyses permet de :
+
+- **Consulter des tableaux de bord prédéfinis** : Présences, congés, performances
+- **Personnaliser les rapports** : Sélection des métriques, des périodes, des filtres
+- **Exporter les données** : Génération de rapports au format PDF, Excel ou CSV
+- **Planifier des rapports récurrents** : Configuration de rapports automatiques envoyés par email
+
+
+### II.4. Gestionnaire d'interface
+
+Le gestionnaire d'interface est un composant central qui gère la navigation et l'affichage des différentes interfaces en fonction du rôle de l'utilisateur et de ses permissions.
+
+#### Layout principal
+
+Le layout principal définit la structure générale de l'application, avec :
+
+- **En-tête** : Logo, titre de la page, menu utilisateur (profil, déconnexion)
+- **Barre latérale** : Menu de navigation, avec des options qui varient selon le rôle
+- **Zone de contenu** : Affichage de l'interface sélectionnée
+- **Pied de page** : Informations de copyright, liens utiles
+
+
+#### Système de navigation
+
+Le système de navigation permet de :
+
+- **Naviguer entre les différentes interfaces** : Via le menu de la barre latérale
+- **Accéder rapidement aux fonctionnalités fréquemment utilisées** : Via des raccourcis dans le tableau de bord
+- **Revenir à la page précédente** : Via un bouton "Retour"
+- **Accéder directement à une page via son URL** : Avec vérification des permissions
+
+
+#### Gestion des permissions
+
+Le gestionnaire d'interface intègre un système de contrôle d'accès basé sur les rôles, qui :
+
+- **Affiche uniquement les options accessibles à l'utilisateur** : En fonction de son rôle
+- **Vérifie les permissions avant d'afficher une interface** : Redirection vers une page d'erreur si l'accès est refusé
+- **Adapte le contenu des interfaces** : Certains éléments peuvent être visibles mais désactivés, ou entièrement masqués
+
+
+## III. Implémentation des fonctionnalités clés
+
+L'implémentation des fonctionnalités clés du système a été réalisée en suivant les spécifications définies lors de la phase d'analyse. Chaque module a été développé de manière indépendante, puis intégré dans le système global.
+
+### III.1. Authentification et gestion des utilisateurs
+
+Le module d'authentification et de gestion des utilisateurs est fondamental pour le système, car il contrôle l'accès aux autres fonctionnalités.
+
+#### Authentification
+
+L'authentification a été implémentée avec JWT (JSON Web Tokens), qui offre une solution sécurisée et sans état pour gérer les sessions utilisateur :
+
+- **Processus de connexion** : Vérification des identifiants, génération d'un token JWT, stockage dans le localStorage
+- **Middleware d'authentification** : Vérification du token JWT pour chaque requête API protégée
+- **Gestion des sessions** : Expiration automatique des tokens, rafraîchissement si nécessaire
+- **Déconnexion** : Suppression du token JWT du localStorage
+
+
+L'authentification avec Google a été implémentée en utilisant OAuth 2.0, permettant aux utilisateurs de se connecter avec leur compte Google sans avoir à créer un compte spécifique.
+
+#### Gestion des utilisateurs
+
+La gestion des utilisateurs a été implémentée avec les fonctionnalités suivantes :
+
+- **CRUD des utilisateurs** : Création, lecture, mise à jour, désactivation (soft delete)
+- **Gestion des rôles** : Attribution de rôles prédéfinis (administrateur, responsable RH, manager, employé)
+- **Gestion des permissions** : Définition des actions autorisées pour chaque rôle
+- **Profil utilisateur** : Informations personnelles, préférences, photo de profil
+
+
+### III.2. Gestion des départements
+
+Le module de gestion des départements permet d'organiser les utilisateurs en unités organisationnelles.
+
+#### Structure des départements
+
+La structure des départements a été implémentée avec les fonctionnalités suivantes :
+
+- **CRUD des départements** : Création, lecture, mise à jour, suppression
+- **Hiérarchie des départements** : Possibilité de définir des départements parents et enfants
+- **Attribution de responsables** : Désignation d'un utilisateur comme responsable de département
+
+
+#### Affectation des utilisateurs
+
+L'affectation des utilisateurs aux départements a été implémentée avec les fonctionnalités suivantes :
+
+- **Attribution d'un utilisateur à un département** : Lors de la création ou de la modification d'un utilisateur
+- **Visualisation des membres d'un département** : Liste des utilisateurs avec leurs rôles et positions
+- **Transfert d'un utilisateur** : Changement de département avec historique
+
+
+### III.3. Suivi des présences
+
+Le module de suivi des présences permet d'enregistrer et de gérer les heures de travail des employés.
+
+#### Enregistrement des présences
+
+L'enregistrement des présences a été implémenté avec les fonctionnalités suivantes :
+
+- **Check-in et check-out** : Enregistrement des heures d'arrivée et de départ
+- **Géolocalisation** : Option pour vérifier la localisation lors du check-in/check-out
+- **Saisie des activités** : Description des tâches effectuées, avec durée et projet associé
+- **Calcul automatique** : Temps de travail total, heures supplémentaires
+
+
+#### Validation et reporting
+
+La validation et le reporting des présences ont été implémentés avec les fonctionnalités suivantes :
+
+- **Validation par les managers** : Approbation ou rejet des enregistrements de présence
+- **Génération de rapports** : Par employé, par département, par période
+- **Visualisations graphiques** : Diagrammes de temps de travail, tendances
+- **Export des données** : Formats PDF, Excel, CSV
+
+
+### III.4. Gestion des congés
+
+Le module de gestion des congés permet de demander, valider et suivre les congés des employés.
+
+#### Demande de congés
+
+La demande de congés a été implémentée avec les fonctionnalités suivantes :
+
+- **Formulaire de demande** : Type de congé, dates de début et de fin, motif
+- **Calcul automatique** : Durée en jours ouvrés, impact sur le solde de congés
+- **Pièces justificatives** : Upload de documents (certificat médical, etc.)
+- **Notification** : Alerte au manager pour validation
+
+
+#### Validation et suivi
+
+La validation et le suivi des congés ont été implémentés avec les fonctionnalités suivantes :
+
+- **Workflow de validation** : En attente, approuvé, refusé
+- **Commentaires** : Possibilité d'ajouter des commentaires lors de la validation
+- **Calendrier des congés** : Vue d'ensemble des congés de l'équipe ou du département
+- **Solde de congés** : Calcul et affichage du solde restant, historique des congés pris
+
+
+### III.5. Gestion des tâches
+
+Le module de gestion des tâches permet d'attribuer, suivre et évaluer les tâches des employés.
+
+#### Création et attribution des tâches
+
+La création et l'attribution des tâches ont été implémentées avec les fonctionnalités suivantes :
+
+- **Formulaire de création** : Titre, description, priorité, échéance
+- **Attribution** : Assignation à un ou plusieurs utilisateurs
+- **Catégorisation** : Par projet, par type, par département
+- **Pièces jointes** : Upload de documents liés à la tâche
+
+
+#### Suivi et évaluation
+
+Le suivi et l'évaluation des tâches ont été implémentés avec les fonctionnalités suivantes :
+
+- **Mise à jour du statut** : À faire, en cours, terminée, bloquée
+- **Commentaires** : Discussion sur la tâche entre les personnes impliquées
+- **Notifications** : Alertes pour les échéances, les mises à jour
+- **Évaluation** : Notation de la qualité et du respect des délais
+
+
+### III.6. Messagerie interne
+
+Le module de messagerie interne permet la communication entre les utilisateurs du système.
+
+#### Envoi et réception de messages
+
+L'envoi et la réception de messages ont été implémentés avec les fonctionnalités suivantes :
+
+- **Composition de messages** : Destinataires, sujet, contenu, pièces jointes
+- **Boîte de réception** : Liste des messages reçus, avec indication des non lus
+- **Réponse et transfert** : Possibilité de répondre ou de transférer un message
+- **Notifications** : Alertes pour les nouveaux messages
+
+
+#### Gestion des conversations
+
+La gestion des conversations a été implémentée avec les fonctionnalités suivantes :
+
+- **Groupes de discussion** : Création de conversations avec plusieurs participants
+- **Historique** : Conservation de l'historique des échanges
+- **Recherche** : Recherche dans les messages par mot-clé, expéditeur, date
+- **Organisation** : Archivage, marquage comme lu/non lu, suppression
+
+
+### III.7. Assistant IA
+
+Le module d'assistant IA utilise l'intelligence artificielle pour analyser les données et fournir des recommandations personnalisées.
+
+#### Analyse des performances
+
+L'analyse des performances a été implémentée avec les fonctionnalités suivantes :
+
+- **Collecte de données** : Agrégation des données de présence, de tâches, de congés
+- **Calcul d'indicateurs** : Productivité, respect des délais, équilibre travail-repos
+- **Détection de tendances** : Évolution des performances dans le temps
+- **Comparaison** : Benchmarking par rapport à la moyenne de l'équipe ou du département
+
+
+#### Recommandations personnalisées
+
+Les recommandations personnalisées ont été implémentées avec les fonctionnalités suivantes :
+
+- **Suggestions d'amélioration** : Basées sur l'analyse des performances
+- **Prévisions** : Anticipation des besoins en ressources, des risques de surcharge
+- **Conseils personnalisés** : Adaptés au profil et aux objectifs de chaque utilisateur
+- **Feedback continu** : Ajustement des recommandations en fonction des résultats
+
+
+### III.8. Rapports et analyses
+
+Le module de rapports et analyses permet de visualiser et d'exploiter les données du système.
+
+#### Tableaux de bord
+
+Les tableaux de bord ont été implémentés avec les fonctionnalités suivantes :
+
+- **Widgets personnalisables** : Sélection des métriques à afficher
+- **Visualisations interactives** : Graphiques, diagrammes, tableaux
+- **Filtres dynamiques** : Par période, par département, par utilisateur
+- **Mise à jour en temps réel** : Rafraîchissement automatique des données
+
+
+#### Génération de rapports
+
+La génération de rapports a été implémentée avec les fonctionnalités suivantes :
+
+- **Rapports prédéfinis** : Présences, congés, performances, tâches
+- **Rapports personnalisés** : Sélection des données et du format
+- **Export multi-format** : PDF, Excel, CSV
+- **Planification** : Configuration de rapports automatiques envoyés par email
+
+
+## IV. Tests et validation
+
+La phase de tests et de validation a permis de s'assurer que le système répond aux exigences fonctionnelles et non fonctionnelles définies lors de l'analyse des besoins.
+
+### IV.1. Tests fonctionnels
+
+Les tests fonctionnels ont vérifié que chaque fonctionnalité du système fonctionne conformément aux spécifications.
+
+#### Tests unitaires
+
+Les tests unitaires ont été réalisés avec Jest pour le backend et React Testing Library pour le frontend :
+
+- **Backend** : Tests des contrôleurs, des services, des modèles
+- **Frontend** : Tests des composants, des hooks, des reducers
+- **Couverture de code** : Objectif de 80% de couverture minimum
+
+
+#### Tests d'intégration
+
+Les tests d'intégration ont vérifié l'interaction entre les différents modules du système :
+
+- **API** : Tests des endpoints avec Supertest
+- **Flux de données** : Vérification de la cohérence des données entre les modules
+- **Authentification** : Tests des processus de connexion, déconnexion, vérification des permissions
+
+
+#### Tests end-to-end
+
+Les tests end-to-end ont simulé des scénarios d'utilisation complets, de bout en bout :
+
+- **Cypress** : Automatisation des tests sur l'interface utilisateur
+- **Scénarios utilisateur** : Simulation des actions utilisateur typiques
+- **Validation des workflows** : Vérification des processus métier complets
+
+
+### IV.2. Tests de performance
+
+Les tests de performance ont évalué la capacité du système à répondre aux exigences de performance définies.
+
+#### Tests de charge
+
+Les tests de charge ont mesuré les performances du système sous une charge normale et élevée :
+
+- **Apache JMeter** : Simulation de multiples utilisateurs simultanés
+- **Temps de réponse** : Mesure du temps de réponse moyen des requêtes
+- **Utilisation des ressources** : Surveillance de l'utilisation CPU, mémoire, réseau
+
+
+#### Tests de stress
+
+Les tests de stress ont évalué la stabilité du système dans des conditions extrêmes :
+
+- **Augmentation progressive de la charge** : Jusqu'à atteindre le point de rupture
+- **Récupération après surcharge** : Vérification du comportement après un pic de charge
+- **Gestion des erreurs** : Validation des mécanismes de fallback et de retry
+
+
+#### Tests de scalabilité
+
+Les tests de scalabilité ont vérifié la capacité du système à s'adapter à une augmentation de la charge :
+
+- **Scaling horizontal** : Ajout de serveurs supplémentaires
+- **Scaling vertical** : Augmentation des ressources (CPU, mémoire)
+- **Optimisation des performances** : Identification et résolution des goulots d'étranglement
+
+
+### IV.3. Retours utilisateurs
+
+Les retours utilisateurs ont été collectés tout au long du développement pour améliorer continuellement le système.
+
+#### Tests utilisateurs
+
+Les tests utilisateurs ont été réalisés avec un panel représentatif des différents types d'utilisateurs :
+
+- **Sessions guidées** : Observation des utilisateurs réalisant des tâches spécifiques
+- **Questionnaires** : Évaluation de la satisfaction et de l'expérience utilisateur
+- **Entretiens** : Discussions approfondies sur les points forts et les axes d'amélioration
+
+
+#### Bêta-test
+
+Une phase de bêta-test a été organisée avec un groupe restreint d'utilisateurs réels :
+
+- **Utilisation en conditions réelles** : Pendant deux semaines
+- **Collecte de feedback** : Via un formulaire dédié et des sessions de debriefing
+- **Correction des bugs** : Résolution rapide des problèmes identifiés
+
+
+#### Ajustements post-déploiement
+
+Après le déploiement initial, des ajustements ont été réalisés en fonction des retours utilisateurs :
+
+- **Améliorations de l'interface** : Simplification de certains workflows, clarification des libellés
+- **Optimisations de performance** : Résolution des lenteurs signalées
+- **Nouvelles fonctionnalités** : Ajout de fonctionnalités demandées par les utilisateurs
+
+
+## V. Conclusion
+
+La réalisation et l'implémentation du système de gestion RH et de suivi du temps ont été menées à bien en suivant une approche méthodique et rigoureuse. L'environnement de travail a été configuré pour optimiser le développement et la collaboration, les interfaces ont été conçues pour offrir une expérience utilisateur intuitive et agréable, et les fonctionnalités clés ont été implémentées conformément aux spécifications.
+
+Les tests et la validation ont permis de s'assurer que le système répond aux exigences fonctionnelles et non fonctionnelles, et les retours utilisateurs ont guidé les ajustements et les améliorations. Le résultat est un système robuste, performant et convivial, qui répond aux besoins de l'entreprise en matière de gestion des ressources humaines et de suivi du temps.
+
+Le déploiement du système a été réalisé avec succès, et les utilisateurs ont rapidement adopté la nouvelle solution, témoignant de sa pertinence et de sa qualité. Les prochaines étapes consisteront à maintenir et à faire évoluer le système en fonction des besoins changeants de l'entreprise et des avancées technologiques.
+
+---
+
+# Conclusion Générale
+
+Au terme de ce projet de fin d'études, nous avons conçu et développé un système complet de gestion des ressources humaines et de suivi du temps, répondant aux besoins spécifiques de l'entreprise. Ce système, basé sur la stack MERN (MongoDB, Express, React, Node.js), offre une solution moderne, évolutive et sécurisée pour automatiser et rationaliser les processus RH.
+
+## Synthèse des réalisations
+
+Le système développé comprend plusieurs modules interconnectés :
+
+- **Gestion des utilisateurs et des départements** : Création et gestion des profils utilisateurs, des rôles et des permissions, organisation des départements
+- **Suivi des présences** : Enregistrement et validation des heures de travail, gestion des horaires, reporting
+- **Gestion des congés** : Demande, validation et suivi des congés, calcul automatique des soldes
+- **Gestion des tâches** : Attribution, suivi et évaluation des tâches, gestion des projets
+- **Messagerie interne** : Communication entre les utilisateurs, notifications, partage de documents
+- **Assistant IA** : Analyse des performances, recommandations personnalisées, automatisation de tâches
+- **Rapports et analyses** : Tableaux de bord personnalisables, rapports prédéfinis, export de données
+
+
+Ces modules fonctionnent de manière intégrée, offrant une expérience utilisateur cohérente et fluide, tout en garantissant la cohérence et l'intégrité des données.
+
+## Apports du projet
+
+Le système de gestion RH et de suivi du temps apporte de nombreux bénéfices à l'entreprise :
+
+- **Gain de temps** : Automatisation des tâches répétitives, réduction du temps consacré aux activités administratives
+- **Amélioration de la précision** : Réduction des erreurs humaines grâce aux processus automatisés
+- **Centralisation des données** : Toutes les informations RH sont stockées dans un système unique, garantissant leur cohérence et leur accessibilité
+- **Meilleure visibilité** : Tableaux de bord et rapports offrant une vision claire et en temps réel des activités
+- **Prise de décision facilitée** : Données précises et à jour permettant une prise de décision plus éclairée
+- **Expérience utilisateur améliorée** : Interface intuitive et responsive facilitant l'utilisation du système
+- **Collaboration renforcée** : Outils de communication intégrés favorisant les échanges entre les utilisateurs
+
+
+Les premiers retours des utilisateurs sont très positifs, témoignant de l'adéquation du système avec leurs besoins et leurs attentes.
+
+## Difficultés rencontrées
+
+Le développement du système a présenté plusieurs défis :
+
+- **Complexité des processus RH** : Nécessité de comprendre et de modéliser des processus métier complexes et parfois spécifiques à l'entreprise
+- **Intégration des différents modules** : Garantir la cohérence et la communication entre les différents modules du système
+- **Performance et scalabilité** : Optimiser les performances pour gérer un grand nombre d'utilisateurs et un volume important de données
+- **Sécurité des données** : Protéger les données sensibles et respecter les réglementations en vigueur (RGPD)
+- **Expérience utilisateur** : Concevoir une interface intuitive et agréable pour des utilisateurs aux profils variés
+
+
+Ces défis ont été relevés grâce à une approche méthodique, une collaboration étroite avec les parties prenantes, et l'utilisation de technologies et de pratiques modernes.
+
+## Perspectives d'évolution
+
+Le système de gestion RH et de suivi du temps a été conçu pour évoluer et s'adapter aux besoins futurs de l'entreprise. Plusieurs pistes d'évolution sont envisagées :
+
+- **Module de recrutement** : Gestion des candidatures, des entretiens, des offres d'emploi
+- **Module de formation** : Planification et suivi des formations, gestion des compétences
+- **Module de paie** : Calcul des salaires, génération des bulletins de paie, gestion des avantages
+- **Intégration avec d'autres systèmes** : ERP, CRM, outils de comptabilité
+- **Application mobile** : Version mobile pour faciliter l'accès en déplacement
+- **Amélioration de l'assistant IA** : Nouvelles fonctionnalités basées sur l'apprentissage automatique et le traitement du langage naturel
+
+
+Ces évolutions permettront d'enrichir le système et de couvrir un spectre plus large des besoins en gestion des ressources humaines.
+
+## Bilan personnel
+
+Ce projet de fin d'études a été une expérience enrichissante, tant sur le plan technique que humain. Il m'a permis de mettre en pratique les connaissances acquises durant ma formation, tout en développant de nouvelles compétences :
+
+- **Compétences techniques** : Maîtrise de la stack MERN, conception d'architecture logicielle, développement d'interfaces utilisateur modernes
+- **Gestion de projet** : Planification, suivi, collaboration avec une équipe pluridisciplinaire
+- **Communication** : Échanges avec les parties prenantes, présentation des avancées, documentation
+- **Résolution de problèmes** : Analyse des besoins, conception de solutions, debugging
+
+
+Cette expérience m'a également permis de mieux comprendre les enjeux et les défis de la gestion des ressources humaines dans un contexte d'entreprise, et de mesurer l'impact que peut avoir un système d'information bien conçu sur l'efficacité et la satisfaction des utilisateurs.
+
+En conclusion, ce projet de fin d'études a été une étape importante dans mon parcours académique et professionnel, me préparant efficacement aux défis qui m'attendent dans ma future carrière d'ingénieur en informatique.
+
+---
+
+# Bibliographie
+
+1. Flanagan, D. (2020). *JavaScript: The Definitive Guide* (7th ed.). O'Reilly Media.
+2. Banks, A., & Porcello, E. (2020). *Learning React: Modern Patterns for Developing React Apps* (2nd ed.). O'Reilly Media.
+3. Dayley, B. (2019). *Node.js, MongoDB and Angular Web Development* (2nd ed.). Addison-Wesley Professional.
+4. Chodorow, K. (2013). *MongoDB: The Definitive Guide* (2nd ed.). O'Reilly Media.
+5. Bhatt, S. (2018). *React Material-UI Cookbook*. Packt Publishing.
+6. Wieruch, R. (2019). *The Road to React: Your Journey to Master Plain Yet Pragmatic React.js*. Self-published.
+7. Haverbeke, M. (2018). *Eloquent JavaScript: A Modern Introduction to Programming* (3rd ed.). No Starch Press.
+8. Fowler, M. (2002). *Patterns of Enterprise Application Architecture*. Addison-Wesley Professional.
+9. Martin, R. C. (2017). *Clean Architecture: A Craftsman's Guide to Software Structure and Design*. Prentice Hall.
+10. Nygard, M. T. (2007). *Release It!: Design and Deploy Production-Ready Software*. Pragmatic Bookshelf.
+11. Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley Professional.
+12. Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley Professional.
+13. Humble, J., & Farley, D. (2010). *Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation*. Addison-Wesley Professional.
+14. Kim, G., Debois, P., Willis, J., & Humble, J. (2016). *The DevOps Handbook: How to Create World-Class Agility, Reliability, and Security in Technology Organizations*. IT Revolution Press.
+15. Newman, S. (2015). *Building Microservices: Designing Fine-Grained Systems*. O'Reilly Media.
+16. Krug, S. (2014). *Don't Make Me Think, Revisited: A Common Sense Approach to Web Usability* (3rd ed.). New Riders.
+17. Frain, B. (2020). *Responsive Web Design with HTML5 and CSS* (3rd ed.). Packt Publishing.
+18. Duckett, J. (2014). *JavaScript and JQuery: Interactive Front-End Web Development*. Wiley.
+19. Osmani, A. (2017). *Learning JavaScript Design Patterns* (2nd ed.). O'Reilly Media.
+20. Simpson, K. (2015). *You Don't Know JS: Up & Going*. O'Reilly Media.
+
+
+---
+
+# Annexes
+
+## Annexe 1 : Structure du code source
+
+### Structure du backend
+
+```plaintext
+backend/
+├── config/
+│   ├── db.js
+│   └── passport.js
+├── controllers/
+│   ├── aiAssistantController.js
+│   ├── attendanceController.js
+│   ├── authController.js
+│   ├── departmentController.js
+│   ├── leaveController.js
+│   ├── messageController.js
+│   ├── reportController.js
+│   ├── taskController.js
+│   └── userController.js
+├── middleware/
+│   ├── auth.js
+│   ├── error.js
+│   └── upload.js
+├── models/
+│   ├── AIConversation.js
+│   ├── Attendance.js
+│   ├── Department.js
+│   ├── Leave.js
+│   ├── Message.js
+│   ├── Task.js
+│   └── User.js
+├── routes/
+│   ├── aiAssistantRoutes.js
+│   ├── attendanceRoutes.js
+│   ├── authRoutes.js
+│   ├── departmentRoutes.js
+│   ├── leaveRoutes.js
+│   ├── messageRoutes.js
+│   ├── reportRoutes.js
+│   ├── taskRoutes.js
+│   └── userRoutes.js
+├── scripts/
+│   ├── seed.js
+│   └── seedDemo.js
+├── services/
+│   └── scheduledTasks.js
+├── utils/
+│   ├── email.js
+│   ├── logger.js
+│   └── validation.js
+├── .env
+├── .env.example
+├── package.json
+└── server.js
+```
+
+### Structure du frontend
+
+```plaintext
+frontend/
+├── public/
+│   ├── images/
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── src/
+│   ├── components/
+│   │   ├── auth/
+│   │   │   ├── LoginForm.js
+│   │   │   ├── ProtectedRoute.js
+│   │   │   └── RoleRoute.js
+│   │   ├── common/
+│   │   │   ├── CustomChart.js
+│   │   │   ├── DataTable.js
+│   │   │   ├── PageHeader.js
+│   │   │   └── StatsCard.js
+│   │   ├── dashboard/
+│   │   ├── departments/
+│   │   ├── leaves/
+│   │   ├── messages/
+│   │   ├── tasks/
+│   │   └── users/
+│   ├── contexts/
+│   │   ├── AuthContext.js
+│   │   ├── NotificationContext.js
+│   │   └── SocketContext.js
+│   ├── layouts/
+│   │   ├── AuthLayout.js
+│   │   └── DashboardLayout.js
+│   ├── pages/
+│   │   ├── admin/
+│   │   │   ├── DepartmentFormPage.js
+│   │   │   ├── DepartmentsPage.js
+│   │   │   ├── UserFormPage.js
+│   │   │   └── UsersPage.js
+│   │   ├── ai-assistant/
+│   │   │   ├── AssistantPage.js
+│   │   │   └── PerformanceAnalysisPage.js
+│   │   ├── attendance/
+│   │   │   ├── AttendancePage.js
+│   │   │   ├── AttendanceReportPage.js
+│   │   │   └── MyAttendancePage.js
+│   │   ├── auth/
+│   │   │   ├── CompleteProfilePage.js
+│   │   │   ├── ForgotPasswordPage.js
+│   │   │   ├── GoogleAuthCallback.js
+│   │   │   └── LoginPage.js
+│   │   ├── calendar/
+│   │   │   └── CalendarPage.js
+│   │   ├── dashboard/
+│   │   │   └── DashboardPage.js
+│   │   ├── leaves/
+│   │   │   ├── LeaveApprovalPage.js
+│   │   │   ├── LeaveDetailPage.js
+│   │   │   ├── LeaveRequestPage.js
+│   │   │   └── LeavesPage.js
+│   │   ├── messages/
+│   │   │   ├── ConversationPage.js
+│   │   │   └── MessagesPage.js
+│   │   ├── profile/
+│   │   │   ├── ProfilePage.js
+│   │   │   └── SettingsPage.js
+│   │   ├── reports/
+│   │   │   └── ReportsPage.js
+│   │   └── tasks/
+│   │       ├── TaskDetailPage.js
+│   │       ├── TaskFormPage.js
+│   │       └── TasksPage.js
+│   ├── services/
+│   │   ├── api.js
+│   │   ├── auth.js
+│   │   └── socket.js
+│   ├── utils/
+│   │   ├── date.js
+│   │   ├── format.js
+│   │   └── validation.js
+│   ├── App.js
+│   ├── config.js
+│   ├── index.css
+│   ├── index.js
+│   ├── reportWebVitals.js
+│   └── theme.js
+├── .env
+├── package.json
+└── tailwind.config.js
+```
+
+## Annexe 2 : Guide d'installation
+
+### Prérequis
+
+Avant d'installer le système, assurez-vous que les éléments suivants sont installés sur votre machine :
+
+- Node.js (v14.17.0 ou supérieur)
+- npm (v7.20.0 ou supérieur)
+- MongoDB (v4.4 ou supérieur)
+- Git
+
+
+### Installation du backend
+
+1. Clonez le dépôt Git :
+
+
+```shellscript
+git clone https://github.com/votre-organisation/hr-management-system.git
+cd hr-management-system/backend
+```
+
+2. Installez les dépendances :
+
+
+```shellscript
+npm install
+```
+
+3. Configurez les variables d'environnement :
+
+
+```shellscript
+cp .env.example .env
+```
+
+Éditez le fichier `.env` pour configurer les variables d'environnement (connexion à la base de données, clés API, etc.).
+
+4. Initialisez la base de données :
+
+
+```shellscript
+npm run seed
+```
+
+5. Démarrez le serveur :
+
+
+```shellscript
+npm run dev
+```
+
+Le serveur backend sera accessible à l'adresse [http://localhost:5000](http://localhost:5000).
+
+### Installation du frontend
+
+1. Ouvrez un nouveau terminal et naviguez vers le dossier frontend :
+
+
+```shellscript
+cd hr-management-system/frontend
+```
+
+2. Installez les dépendances :
+
+
+```shellscript
+npm install
+```
+
+3. Configurez les variables d'environnement :
+
+
+```shellscript
+cp .env.example .env
+```
+
+Éditez le fichier `.env` pour configurer les variables d'environnement (URL de l'API backend, clés API, etc.).
+
+4. Démarrez l'application :
+
+
+```shellscript
+npm start
+```
+
+L'application frontend sera accessible à l'adresse [http://localhost:3000](http://localhost:3000).
+
+### Déploiement en production
+
+Pour déployer le système en production, suivez ces étapes supplémentaires :
+
+1. Construisez l'application frontend :
+
+
+```shellscript
+cd hr-management-system/frontend
+npm run build
+```
+
+2. Configurez un serveur web (Nginx, Apache) pour servir les fichiers statiques du build.
+3. Configurez le backend pour la production :
+
+
+```shellscript
+cd hr-management-system/backend
+NODE_ENV=production npm start
+```
+
+Il est recommandé d'utiliser un gestionnaire de processus comme PM2 pour exécuter le backend en production :
+
+```shellscript
+npm install -g pm2
+pm2 start server.js --name "hr-system-backend"
+```
+
+## Annexe 3 : Guide d'utilisation
+
+### Connexion au système
+
+1. Accédez à l'URL du système dans votre navigateur.
+2. Sur la page de connexion, saisissez votre email et votre mot de passe.
+3. Cliquez sur le bouton "Se connecter".
+4. Alternativement, vous pouvez vous connecter avec votre compte Google en cliquant sur le bouton "Se connecter avec Google".
+
+
+### Navigation dans l'interface
+
+L'interface du système est organisée comme suit :
+
+- **Barre latérale** : Menu principal pour accéder aux différentes fonctionnalités.
+- **En-tête** : Affiche le titre de la page actuelle, les notifications, et le menu utilisateur.
+- **Zone de contenu** : Affiche le contenu de la page sélectionnée.
+- **Pied de page** : Informations de copyright et liens utiles.
+
+
+### Gestion des utilisateurs (Administrateur)
+
+1. Accédez à la section "Utilisateurs" dans le menu.
+2. Pour créer un nouvel utilisateur, cliquez sur le bouton "Ajouter un utilisateur".
+3. Remplissez le formulaire avec les informations de l'utilisateur et cliquez sur "Enregistrer".
+4. Pour modifier un utilisateur existant, cliquez sur l'icône de modification à côté de l'utilisateur dans la liste.
+5. Pour désactiver un utilisateur, cliquez sur l'icône de désactivation à côté de l'utilisateur dans la liste.
+
+
+### Suivi des présences (Employé)
+
+1. Accédez à la section "Présences" dans le menu.
+2. Pour enregistrer votre arrivée, cliquez sur le bouton "Check-in".
+3. Pour saisir vos activités, cliquez sur "Ajouter une activité", remplissez le formulaire et cliquez sur "Enregistrer".
+4. Pour enregistrer votre départ, cliquez sur le bouton "Check-out".
+5. Pour consulter votre historique de présences, utilisez les filtres de date en haut de la page.
+
+
+### Demande de congés (Employé)
+
+1. Accédez à la section "Congés" dans le menu.
+2. Pour demander un congé, cliquez sur le bouton "Nouvelle demande".
+3. Sélectionnez le type de congé, les dates de début et de fin, et saisissez un motif.
+4. Si nécessaire, joignez des pièces justificatives en cliquant sur "Ajouter un document".
+5. Cliquez sur "Soumettre" pour envoyer votre demande.
+6. Vous pouvez suivre l'état de vos demandes dans la liste des congés.
+
+
+### Gestion des tâches (Manager)
+
+1. Accédez à la section "Tâches" dans le menu.
+2. Pour créer une nouvelle tâche, cliquez sur le bouton "Nouvelle tâche".
+3. Remplissez le formulaire avec le titre, la description, la priorité et l'échéance de la tâche.
+4. Assignez la tâche à un ou plusieurs utilisateurs en les sélectionnant dans la liste.
+5. Cliquez sur "Enregistrer" pour créer la tâche.
+6. Pour suivre l'avancement des tâches, utilisez les filtres de statut en haut de la page.
+
+
+### Utilisation de l'assistant IA
+
+1. Accédez à la section "Assistant IA" dans le menu.
+2. Pour poser une question, saisissez votre question dans le champ de texte et appuyez sur Entrée.
+3. L'assistant analysera votre question et vous fournira une réponse basée sur les données du système.
+4. Pour consulter l'analyse de vos performances, cliquez sur l'onglet "Analyse des performances".
+5. Vous y trouverez des graphiques et des indicateurs sur votre productivité, votre respect des délais, et d'autres métriques.
+
+
+### Génération de rapports
+
+1. Accédez à la section "Rapports" dans le menu.
+2. Sélectionnez le type de rapport que vous souhaitez générer (présences, congés, performances, etc.).
+3. Configurez les paramètres du rapport (période, utilisateurs, départements, etc.).
+4. Cliquez sur "Générer" pour créer le rapport.
+5. Vous pouvez visualiser le rapport à l'écran ou l'exporter au format PDF, Excel ou CSV en cliquant sur le bouton correspondant.
+
+
+Please make sure to add the following environment variables to your project:
+
+### Chapitre III : Réalisation et implémentation (Suite et fin)
+
+## III.5. Assistant IA (Suite)
+
+### III.5.1. Implémentation de l'interface utilisateur de l'assistant IA
+
+L'interface utilisateur de l'assistant IA a été conçue pour offrir une expérience conversationnelle intuitive et agréable. Elle comprend les éléments suivants :
+
+```javascript
+// frontend/src/pages/ai-assistant/AssistantPage.js
+import React, { useState, useEffect, useRef } from 'react';
+import { Box, Typography, TextField, Button, Paper, Avatar, CircularProgress, Divider, IconButton } from '@mui/material';
+import { Send as SendIcon, MoreVert as MoreVertIcon, Archive as ArchiveIcon } from '@mui/icons-material';
+import { useTheme } from '@mui/material/styles';
+import { useAuth } from '../../contexts/AuthContext';
+import api from '../../utils/api';
+import ReactMarkdown from 'react-markdown';
+import moment from 'moment';
+
+const AssistantPage = () => {
+  const theme = useTheme();
+  const { user } = useAuth();
+  const [conversations, setConversations] = useState([]);
+  const [activeConversation, setActiveConversation] = useState(null);
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  // Récupération des conversations
+  useEffect(() => {
+    const fetchConversations = async () => {
+      try {
+        const response = await api.get('/ai-assistant/conversations');
+        setConversations(response.data.conversations);
+        
+        // Si aucune conversation active, sélectionner la plus récente
+        if (response.data.conversations.length > 0 && !activeConversation) {
+          const mostRecent = response.data.conversations[0];
+          setActiveConversation(mostRecent);
+          fetchConversation(mostRecent._id);
+        }
+      } catch (error) {
+        console.error('Erreur lors de la récupération des conversations:', error);
+      }
+    };
+    
+    fetchConversations();
+  }, []);
+
+  // Récupération d'une conversation spécifique
+  const fetchConversation = async (conversationId) => {
+    try {
+      const response = await api.get(`/ai-assistant/conversations/${conversationId}`);
+      setActiveConversation(response.data.conversation);
+    } catch (error) {
+      console.error('Erreur lors de la récupération de la conversation:', error);
+    }
+  };
+
+  // Création d'une nouvelle conversation
+  const createNewConversation = async () => {
+    try {
+      setLoading(true);
+      const response = await api.post('/ai-assistant/conversations');
+      const newConversation = response.data.conversation;
+      
+      setConversations([newConversation, ...conversations]);
+      setActiveConversation(newConversation);
+      setLoading(false);
+    } catch (error) {
+      console.error('Erreur lors de la création de la conversation:', error);
+      setLoading(false);
+    }
+  };
+
+  // Envoi d'un message
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    
+    if (!message.trim() || !activeConversation) return;
+    
+    try {
+      setLoading(true);
+      
+      // Mise à jour locale pour une expérience utilisateur réactive
+      const updatedConversation = {
+        ...activeConversation,
+        messages: [
+          ...activeConversation.messages,
+          {
+            role: 'user',
+            content: message,
+            timestamp: new Date().toISOString()
+          }
+        ]
+      };
+      
+      setActiveConversation(updatedConversation);
+      setMessage('');
+      
+      // Envoi du message à l'API
+      const response = await api.post(`/ai-assistant/conversations/${activeConversation._id}/messages`, {
+        message: message.trim()
+      });
+      
+      // Mise à jour avec la réponse de l'assistant
+      setActiveConversation(response.data.conversation);
+      
+      // Mise à jour de la liste des conversations
+      setConversations(conversations.map(conv => 
+        conv._id === activeConversation._id ? response.data.conversation : conv
+      ));
+      
+      setLoading(false);
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi du message:', error);
+      setLoading(false);
+    }
+  };
+
+  // Défilement automatique vers le dernier message
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [activeConversation?.messages]);
+
+  // Rendu des messages
+  const renderMessages = () => {
+    if (!activeConversation) return null;
+    
+    return activeConversation.messages.map((msg, index) => {
+      // Ne pas afficher les messages système
+      if (msg.role === 'system') return null;
+      
+      const isUser = msg.role === 'user';
+      
+      return (
+        <Box
+          key={index}
+          sx={{
+            display: 'flex',
+            flexDirection: isUser ? 'row-reverse' : 'row',
+            mb: 2
+          }}
+        >
+          <Avatar
+            sx={{
+              bgcolor: isUser ? theme.palette.primary.main : theme.palette.secondary.main,
+              mr: isUser ? 0 : 1,
+              ml: isUser ? 1 : 0
+            }}
+          >
+            {isUser ? user.firstName.charAt(0) : 'AI'}
+          </Avatar>
+          
+          <Paper
+            elevation={1}
+            sx={{
+              p: 2,
+              maxWidth: '70%',
+              borderRadius: 2,
+              bgcolor: isUser ? theme.palette.primary.light : theme.palette.background.paper
+            }}
+          >
+            {isUser ? (
+              <Typography>{msg.content}</Typography>
+            ) : (
+              <ReactMarkdown>{msg.content}</ReactMarkdown>
+            )}
+            
+            <Typography variant="caption" color="textSecondary" sx={{ display: 'block', mt: 1, textAlign: 'right' }}>
+              {moment(msg.timestamp).format('HH:mm')}
+            </Typography>
+          </Paper>
+        </Box>
+      );
+    });
+  };
+
+  return (
+    <Box sx={{ display: 'flex', height: 'calc(100vh - 64px)' }}>
+      {/* Liste des conversations */}
+      <Box
+        sx={{
+          width: 300,
+          borderRight: `1px solid ${theme.palette.divider}`,
+          overflowY: 'auto',
+          display: { xs: 'none', md: 'block' }
+        }}
+      >
+        <Box sx={{ p: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Typography variant="h6">Conversations</Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={createNewConversation}
+            disabled={loading}
+          >
+            Nouvelle
+          </Button>
+        </Box>
+        
+        <Divider />
+        
+        {conversations.map((conv) => (
+          <Box
+            key={conv._id}
+            sx={{
+              p: 2,
+              cursor: 'pointer',
+              bgcolor: activeConversation?._id === conv._id ? theme.palette.action.selected : 'transparent',
+              '&:hover': {
+                bgcolor: theme.palette.action.hover
+              }
+            }}
+            onClick={() => fetchConversation(conv._id)}
+          >
+            <Typography variant="subtitle1" noWrap>
+              {conv.title || 'Nouvelle conversation'}
+            </Typography>
+            <Typography variant="caption" color="textSecondary" noWrap>
+              {moment(conv.updatedAt).format('DD/MM/YYYY HH:mm')}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+      
+      {/* Zone de conversation */}
+      <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+        {/* En-tête */}
+        <Box
+          sx={{
+            p: 2,
+            borderBottom: `1px solid ${theme.palette.divider}`,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}
+        >
+          <Typography variant="h6">
+            {activeConversation?.title || 'Assistant IA'}
+          </Typography>
+          
+          <IconButton>
+            <MoreVertIcon />
+          </IconButton>
+        </Box>
+        
+        {/* Messages */}
+        <Box
+          sx={{
+            flexGrow: 1,
+            p: 2,
+            overflowY: 'auto',
+            bgcolor: theme.palette.background.default
+          }}
+        >
+          {renderMessages()}
+          <div ref={messagesEndRef} />
+        </Box>
+        
+        {/* Zone de saisie */}
+        <Box
+          component="form"
+          onSubmit={sendMessage}
+          sx={{
+            p: 2,
+            borderTop: `1px solid ${theme.palette.divider}`,
+            display: 'flex',
+            alignItems: 'center'
+          }}
+        >
+          <TextField
+            fullWidth
+            variant="outlined"
+            placeholder="Tapez votre message..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            disabled={loading || !activeConversation}
+            sx={{ mr: 2 }}
+          />
+          
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            endIcon={loading ? <CircularProgress size={20} color="inherit" /> : <SendIcon />}
+            disabled={loading || !message.trim() || !activeConversation}
+          >
+            Envoyer
+          </Button>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export default AssistantPage;
+```
+
+### III.5.2. Implémentation de l'analyse des performances
+
+L'analyse des performances est une fonctionnalité clé de l'assistant IA, permettant aux utilisateurs d'obtenir des insights sur leur productivité et leur efficacité :
+
+```javascript
+// frontend/src/pages/ai-assistant/PerformanceAnalysisPage.js
+import React, { useState, useEffect } from 'react';
+import { Box, Typography, Paper, Grid, CircularProgress, Button, Card, CardContent, Divider, TextField } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { useTheme } from '@mui/material/styles';
+import { useAuth } from '../../contexts/AuthContext';
+import api from '../../utils/api';
+import moment from 'moment';
+import 'moment/locale/fr';
+import ReactMarkdown from 'react-markdown';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+} from 'chart.js';
+import { Line, Bar, Doughnut } from 'react-chartjs-2';
+
+// Enregistrement des composants Chart.js
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+);
+
+const PerformanceAnalysisPage = () => {
+  const theme = useTheme();
+  const { user } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [performanceData, setPerformanceData] = useState(null);
+  const [startDate, setStartDate] = useState(moment().subtract(30, 'days'));
+  const [endDate, setEndDate] = useState(moment());
+  const [analysis, setAnalysis] = useState('');
+
+  // Récupération des données de performance
+  const fetchPerformanceData = async () => {
+    try {
+      setLoading(true);
+      
+      const response = await api.get('/ai-assistant/performance', {
+        params: {
+          startDate: startDate.format('YYYY-MM-DD'),
+          endDate: endDate.format('YYYY-MM-DD')
+        }
+      });
+      
+      setPerformanceData(response.data.performanceData);
+      setAnalysis(response.data.performanceData.analysis);
+      setLoading(false);
+    } catch (error) {
+      console.error('Erreur lors de la récupération des données de performance:', error);
+      setLoading(false);
+    }
+  };
+
+  // Chargement initial des données
+  useEffect(() => {
+    fetchPerformanceData();
+  }, []);
+
+  // Préparation des données pour les graphiques
+  const prepareChartData = () => {
+    if (!performanceData) return null;
+    
+    // Données pour le graphique en donut des taux
+    const ratesData = {
+      labels: ['Présence', 'Complétion des tâches'],
+      datasets: [
+        {
+          data: [
+            performanceData.indicators.attendanceRate,
+            performanceData.indicators.taskCompletionRate
+          ],
+          backgroundColor: [
+            theme.palette.primary.main,
+            theme.palette.secondary.main
+          ],
+          borderColor: [
+            theme.palette.primary.dark,
+            theme.palette.secondary.dark
+          ],
+          borderWidth: 1
+        }
+      ]
+    };
+    
+    // Données pour le graphique en barres des heures
+    const hoursData = {
+      labels: ['Durée moyenne des tâches', 'Heures supplémentaires'],
+      datasets: [
+        {
+          label: 'Heures',
+          data: [
+            performanceData.indicators.averageTaskDuration,
+            performanceData.indicators.overtimeHours
+          ],
+          backgroundColor: [
+            theme.palette.info.main,
+            theme.palette.warning.main
+          ]
+        }
+      ]
+    };
+    
+    return { ratesData, hoursData };
+  };
+
+  const chartData = prepareChartData();
+
+  return (
+    <Box sx={{ p: 3 }}>
+      <Typography variant="h4" gutterBottom>
+        Analyse des performances
+      </Typography>
+      
+      <Paper sx={{ p: 3, mb: 3 }}>
+        <LocalizationProvider dateAdapter={AdapterMoment} adapterLocale="fr">
+          <Grid container spacing={3} alignItems="center">
+            <Grid item xs={12} md={4}>
+              <DatePicker
+                label="Date de début"
+                value={startDate}
+                onChange={(newValue) => setStartDate(newValue)}
+                renderInput={(params) => <TextField {...params} fullWidth />}
+              />
+            </Grid>
+            
+            <Grid item xs={12} md={4}>
+              <DatePicker
+                label="Date de fin"
+                value={endDate}
+                onChange={(newValue) => setEndDate(newValue)}
+                renderInput={(params) => <TextField {...params} fullWidth />}
+                minDate={startDate}
+              />
+            </Grid>
+            
+            <Grid item xs={12} md={4}>
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                onClick={fetchPerformanceData}
+                disabled={loading}
+              >
+                {loading ? <CircularProgress size={24} /> : 'Analyser'}
+              </Button>
+            </Grid>
+          </Grid>
+        </LocalizationProvider>
+      </Paper>
+      
+      {loading ? (
+        <Box sx={{ display: 'flex', justifyContent: 'center', my: 5 }}>
+          <CircularProgress />
+        </Box>
+      ) : performanceData ? (
+        <>
+          <Typography variant="h5" gutterBottom>
+            Période : {moment(performanceData.period.start).format('DD/MM/YYYY')} - {moment(performanceData.period.end).format('DD/MM/YYYY')}
+          </Typography>
+          
+          <Grid container spacing={3}>
+            {/* Indicateurs clés */}
+            <Grid item xs={12} md={6}>
+              <Card>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
+                    Indicateurs clés
+                  </Typography>
+                  
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <Typography variant="subtitle1">Taux de présence</Typography>
+                      <Typography variant="h4" color="primary">
+                        {performanceData.indicators.attendanceRate.toFixed(1)}%
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary">
+                        {performanceData.details.attendance.actual} / {performanceData.details.attendance.expected} jours
+                      </Typography>
+                    </Grid>
+                    
+                    <Grid item xs={6}>
+                      <Typography variant="subtitle1">Taux de complétion des tâches</Typography>
+                      <Typography variant="h4" color="secondary">
+                        {performanceData.indicators.taskCompletionRate.toFixed(1)}%
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary">
+                        {performanceData.details.tasks.completed} / {performanceData.details.tasks.total} tâches
+                      </Typography>
+                    </Grid>
+                    
+                    <Grid item xs={6}>
+                      <Typography variant="subtitle1">Durée moyenne des tâches</Typography>
+                      <Typography variant="h4" color="info.main">
+                        {performanceData.indicators.averageTaskDuration.toFixed(1)}h
+                      </Typography>
+                    </Grid>
+                    
+                    <Grid item xs={6}>
+                      <Typography variant="subtitle1">Heures supplémentaires</Typography>
+                      <Typography variant="h4" color="warning.main">
+                        {performanceData.indicators.overtimeHours.toFixed(1)}h
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
+            </Grid>
+            
+            {/* Graphiques */}
+            <Grid item xs={12} md={6}>
+              <Card>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
+                    Visualisation
+                  </Typography>
+                  
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} md={6}>
+                      {chartData && (
+                        <Box sx={{ height: 200 }}>
+                          <Doughnut
+                            data={chartData.ratesData}
+                            options={{
+                              responsive: true,
+                              maintainAspectRatio: false,
+                              plugins: {
+                                legend: {
+                                  position: 'bottom'
+                                }
+                              }
+                            }}
+                          />
+                        </Box>
+                      )}
+                    </Grid>
+                    
+                    <Grid item xs={12} md={6}>
+                      {chartData && (
+                        <Box sx={{ height: 200 }}>
+                          <Bar
+                            data={chartData.hoursData}
+                            options={{
+                              responsive: true,
+                              maintainAspectRatio: false,
+                              plugins: {
+                                legend: {
+                                  display: false
+                                }
+                              }
+                            }}
+                          />
+                        </Box>
+                      )}
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
+            </Grid>
+            
+            {/* Analyse détaillée */}
+            <Grid item xs={12}>
+              <Card>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
+                    Analyse détaillée
+                  </Typography>
+                  
+                  <Divider sx={{ my: 2 }} />
+                  
+                  <Box sx={{ mt: 2 }}>
+                    <ReactMarkdown>{analysis}</ReactMarkdown>
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </>
+      ) : (
+        <Typography variant="body1" color="textSecondary" align="center">
+          Aucune donnée disponible. Veuillez sélectionner une période et cliquer sur "Analyser".
+        </Typography>
+      )}
+    </Box>
+  );
+};
+
+export default PerformanceAnalysisPage;
+```
+
+## III.6. Intégration et déploiement continu
+
+### III.6.1. Configuration de l'intégration continue
+
+Pour assurer la qualité du code et faciliter le déploiement, un pipeline d'intégration continue a été mis en place avec GitHub Actions. Ce pipeline exécute automatiquement les tests, vérifie la qualité du code et prépare le déploiement à chaque push sur les branches principales.
+
+```yaml
+# .github/workflows/ci.yml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+    
+    services:
+      mongodb:
+        image: mongo:4.4
+        ports:
+          - 27017:27017
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          
+      - name: Install backend dependencies
+        run: cd backend && npm ci
+        
+      - name: Run backend tests
+        run: cd backend && npm test
+        env:
+          MONGODB_URI: mongodb://localhost:27017/hr_management_test
+          JWT_SECRET: test_secret
+          REFRESH_TOKEN_SECRET: test_refresh_secret
+  
+  test-frontend:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          
+      - name: Install frontend dependencies
+        run: cd frontend && npm ci
+        
+      - name: Run frontend tests
+        run: cd frontend && npm test
+  
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          
+      - name: Install dependencies
+        run: |
+          cd backend && npm ci
+          cd ../frontend && npm ci
+        
+      - name: Lint backend
+        run: cd backend && npm run lint
+        
+      - name: Lint frontend
+        run: cd frontend && npm run lint
+  
+  build:
+    needs: [test-backend, test-frontend, lint]
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          
+      - name: Install backend dependencies
+        run: cd backend && npm ci
+        
+      - name: Install frontend dependencies
+        run: cd frontend && npm ci
+        
+      - name: Build frontend
+        run: cd frontend && npm run build
+        
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: |
+            frontend/build
+            backend
+            !backend/node_modules
+  
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
+          
+      - name: Deploy to production
+        # Ici, vous pouvez ajouter les étapes de déploiement spécifiques à votre infrastructure
+        # Par exemple, déploiement sur Heroku, AWS, etc.
+        run: echo "Déploiement en production"
+```
+
+### III.6.2. Configuration du déploiement continu
+
+Pour le déploiement continu, Docker a été utilisé pour conteneuriser l'application, facilitant ainsi son déploiement sur différents environnements.
+
+```dockerfile
+# backend/Dockerfile
+FROM node:16-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm ci --only=production
+
+COPY . .
+
+EXPOSE 5000
+
+CMD ["node", "server.js"]
+```
+
+```dockerfile
+# frontend/Dockerfile
+FROM node:16-alpine as build
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm ci
+
+COPY . .
+
+RUN npm run build
+
+FROM nginx:alpine
+
+COPY --from=build /app/build /usr/share/nginx/html
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:4.4
+    restart: always
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    restart: always
+    depends_on:
+      - mongodb
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGODB_URI=mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb:27017/hr_management?authSource=admin
+      - JWT_SECRET=${JWT_SECRET}
+      - REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
+      - EMAIL_SERVICE=${EMAIL_SERVICE}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - GOOGLE_REDIRECT_URI=${GOOGLE_REDIRECT_URI}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    restart: always
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
+      - REACT_APP_SOCKET_URL=${REACT_APP_SOCKET_URL}
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+```
+
+# Chapitre IV : Tests et validation
+
+## IV.1. Stratégie de test
+
+### IV.1.1. Types de tests implémentés
+
+Pour garantir la qualité et la fiabilité du système, plusieurs types de tests ont été mis en place :
+
+1. **Tests unitaires** : Tests des fonctions et méthodes individuelles pour vérifier leur comportement isolé.
+2. **Tests d'intégration** : Tests des interactions entre les différents modules du système.
+3. **Tests fonctionnels** : Tests du comportement du système du point de vue de l'utilisateur.
+4. **Tests de performance** : Tests des performances du système sous différentes charges.
+5. **Tests de sécurité** : Tests pour identifier les vulnérabilités potentielles.
+
+
+### IV.1.2. Outils et frameworks de test
+
+Les outils et frameworks suivants ont été utilisés pour implémenter les tests :
+
+- **Jest** : Framework de test JavaScript pour les tests unitaires et d'intégration.
+- **Supertest** : Bibliothèque pour tester les API HTTP.
+- **React Testing Library** : Bibliothèque pour tester les composants React.
+- **Cypress** : Framework de test end-to-end pour les tests fonctionnels.
+- **k6** : Outil de test de charge pour les tests de performance.
+- **OWASP ZAP** : Outil de test de sécurité pour identifier les vulnérabilités.
+
+
+### IV.1.3. Couverture de code
+
+Une couverture de code élevée a été visée pour garantir que la majorité du code est testée. L'objectif était d'atteindre au moins 80% de couverture pour le code critique.
+
+```javascript
+// jest.config.js
+module.exports = {
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov'],
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80
+    }
+  },
+  testEnvironment: 'node',
+  testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(spec|test).js'],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/']
+};
+```
+
+## IV.2. Tests unitaires
+
+### IV.2.1. Tests des modèles
+
+Les tests unitaires des modèles vérifient que les méthodes et validations fonctionnent correctement :
+
+```javascript
+// backend/__tests__/models/User.test.js
+const mongoose = require('mongoose');
+const User = require('../../models/User');
+const bcrypt = require('bcryptjs');
+
+describe('User Model', () => {
+  beforeAll(async () => {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+  });
+
+  afterAll(async () => {
+    await mongoose.connection.close();
+  });
+
+  afterEach(async () => {
+    await User.deleteMany({});
+  });
+
+  it('should create a new user successfully', async () => {
+    const userData = {
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john.doe@example.com',
+      password: 'password123',
+      role: 'employee'
+    };
+
+    const user = new User(userData);
+    const savedUser = await user.save();
+
+    expect(savedUser._id).toBeDefined();
+    expect(savedUser.firstName).toBe(userData.firstName);
+    expect(savedUser.lastName).toBe(userData.lastName);
+    expect(savedUser.email).toBe(userData.email);
+    expect(savedUser.role).toBe(userData.role);
+    expect(savedUser.isActive).toBe(true);
+  });
+
+  it('should not create a user with invalid email', async () => {
+    const userData = {
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'invalid-email',
+      password: 'password123',
+      role: 'employee'
+    };
+
+    const user = new User(userData);
+    
+    await expect(user.save()).rejects.toThrow();
+  });
+
+  it('should hash the password before saving', async () => {
+    const userData = {
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john.doe@example.com',
+      password: 'password123',
+      role: 'employee'
+    };
+
+    const user = new User(userData);
+    const savedUser = await user.save();
+
+    expect(savedUser.password).not.toBe(userData.password);
+    expect(await bcrypt.compare(userData.password, savedUser.password)).toBe(true);
+  });
+});
+```
+
+### IV.2.2. Tests des contrôleurs
+
+Les tests des contrôleurs vérifient que les fonctions de traitement des requêtes fonctionnent correctement :
+
+```javascript
+// backend/__tests__/controllers/authController.test.js
+const request = require('supertest');
+const mongoose = require('mongoose');
+const app = require('../../app');
+const User = require('../../models/User');
+const jwt = require('jsonwebtoken');
+
+describe('Auth Controller', () => {
+  beforeAll(async () => {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+  });
+
+  afterAll(async () => {
+    await mongoose.connection.close();
+  });
+
+  beforeEach(async () => {
+    await User.deleteMany({});
+  });
+
+  describe('POST /api/auth/register', () => {
+    it('should register a new user', async () => {
+      const userData = {
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john.doe@example.com',
+        password: 'password123'
+      };
+
+      const response = await request(app)
+        .post('/api/auth/register')
+        .send(userData)
+        .expect(201);
+
+      expect(response.body.message).toBe('Utilisateur créé avec succès');
+      expect(response.body.user).toBeDefined();
+      expect(response.body.user.firstName).toBe(userData.firstName);
+      expect(response.body.user.lastName).toBe(userData.lastName);
+      expect(response.body.user.email).toBe(userData.email);
+      expect(response.body.user.password).toBeUndefined();
+    });
+
+    it('should not register a user with existing email', async () => {
+      // Créer un utilisateur
+      await User.create({
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john.doe@example.com',
+        password: 'password123',
+        role: 'employee'
+      });
+
+      // Tenter de créer un utilisateur avec le même email
+      const userData = {
+        firstName: 'Jane',
+        lastName: 'Doe',
+        email: 'john.doe@example.com',
+        password: 'password456'
+      };
+
+      const response = await request(app)
+        .post('/api/auth/register')
+        .send(userData)
+        .expect(400);
+
+      expect(response.body.message).toBe('Cet email est déjà utilisé');
+    });
+  });
+
+  describe('POST /api/auth/login', () => {
+    it('should login a user with valid credentials', async () => {
+      // Créer un utilisateur
+      const password = 'password123';
+      const user = await User.create({
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john.doe@example.com',
+        password,
+        role: 'employee'
+      });
+
+      // Tenter de se connecter
+      const response = await request(app)
+        .post('/api/auth/login')
+        .send({
+          email: user.email,
+          password
+        })
+        .expect(200);
+
+      expect(response.body.token).toBeDefined();
+      expect(response.body.refreshToken).toBeDefined();
+      expect(response.body.user).toBeDefined();
+      expect(response.body.user.email).toBe(user.email);
+    });
+
+    it('should not login a user with invalid credentials', async () => {
+      // Créer un utilisateur
+      const user = await User.create({
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john.doe@example.com',
+        password: 'password123',
+        role: 'employee'
+      });
+
+      // Tenter de se connecter avec un mauvais mot de passe
+      const response = await request(app)
+        .post('/api/auth/login')
+        .send({
+          email: user.email,
+          password: 'wrongpassword'
+        })
+        .expect(401);
+
+      expect(response.body.message).toBe('Email ou mot de passe incorrect');
+    });
+  });
+});
+```
+
+### IV.2.3. Tests des services
+
+Les tests des services vérifient que la logique métier fonctionne correctement :
+
+```javascript
+// backend/__tests__/services/emailService.test.js
+const { sendEmail } = require('../../utils/email');
+const nodemailer = require('nodemailer');
+
+// Mock de nodemailer
+jest.mock('nodemailer');
+
+describe('Email Service', () => {
+  let mockSendMail;
+
+  beforeEach(() => {
+    mockSendMail = jest.fn().mockResolvedValue({ messageId: 'test-id' });
+    nodemailer.createTransport.mockReturnValue({
+      sendMail: mockSendMail
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should send an email successfully', async () => {
+    const emailData = {
+      to: 'test@example.com',
+      subject: 'Test Subject',
+      text: 'Test Content'
+    };
+
+    await sendEmail(emailData);
+
+    expect(nodemailer.createTransport).toHaveBeenCalled();
+    expect(mockSendMail).toHaveBeenCalledWith(expect.objectContaining({
+      to: emailData.to,
+      subject: emailData.subject,
+      text: emailData.text
+    }));
+  });
+
+  it('should throw an error if sending fails', async () => {
+    const error = new Error('Failed to send email');
+    mockSendMail.mockRejectedValue(error);
+
+    const emailData = {
+      to: 'test@example.com',
+      subject: 'Test Subject',
+      text: 'Test Content'
+    };
+
+    await expect(sendEmail(emailData)).rejects.toThrow('Failed to send email');
+  });
+});
+```
+
+## IV.3. Tests d'intégration
+
+### IV.3.1. Tests des API
+
+Les tests d'intégration des API vérifient que les différents endpoints fonctionnent correctement ensemble :
+
+```javascript
+// backend/__tests__/integration/attendance.test.js
+const request = require('supertest');
+const mongoose = require('mongoose');
+const app = require('../../app');
+const User = require('../../models/User');
+const Attendance = require('../../models/Attendance');
+const jwt = require('jsonwebtoken');
+
+describe('Attendance API', () => {
+  let token;
+  let user;
+
+  beforeAll(async () => {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+
+    // Créer un utilisateur pour les tests
+    user = await User.create({
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john.doe@example.com',
+      password: 'password123',
+      role: 'employee'
+    });
+
+    // Générer un token JWT pour l'authentification
+    token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+  });
+
+  afterAll(async () => {
+    await User.deleteMany({});
+    await Attendance.deleteMany({});
+    await mongoose.connection.close();
+  });
+
+  beforeEach(async () => {
+    await Attendance.deleteMany({});
+  });
+
+  describe('POST /api/attendance/check-in', () => {
+    it('should record a check-in', async () => {
+      const response = await request(app)
+        .post('/api/attendance/check-in')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          location: {
+            type: 'office'
+          }
+        })
+        .expect(200);
+
+      expect(response.body.message).toBe('Arrivée enregistrée avec succès');
+      expect(response.body.attendance).toBeDefined();
+      expect(response.body.attendance.user._id.toString()).toBe(user._id.toString());
+      expect(response.body.attendance.checkIn).toBeDefined();
+      expect(response.body.attendance.checkIn.time).toBeDefined();
+      expect(response.body.attendance.checkIn.location.type).toBe('office');
+    });
+
+    it('should not allow multiple check-ins on the same day', async () => {
+      // Premier check-in
+      await request(app)
+        .post('/api/attendance/check-in')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          location: {
+            type: 'office'
+          }
+        })
+        .expect(200);
+
+      // Deuxième check-in (devrait échouer)
+      const response = await request(app)
+        .post('/api/attendance/check-in')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          location: {
+            type: 'office'
+          }
+        })
+        .expect(400);
+
+      expect(response.body.message).toBe('Vous avez déjà enregistré votre arrivée aujourd\'hui');
+    });
+  });
+
+  describe('POST /api/attendance/check-out', () => {
+    it('should record a check-out after check-in', async () => {
+      // Check-in
+      await request(app)
+        .post('/api/attendance/check-in')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          location: {
+            type: 'office'
+          }
+        })
+        .expect(200);
+
+      // Check-out
+      const response = await request(app)
+        .post('/api/attendance/check-out')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          location: {
+            type: 'office'
+          }
+        })
+        .expect(200);
+
+      expect(response.body.message).toBe('Départ enregistré avec succès');
+      expect(response.body.attendance).toBeDefined();
+      expect(response.body.attendance.checkOut).toBeDefined();
+      expect(response.body.attendance.checkOut.time).toBeDefined();
+      expect(response.body.attendance.totalHours).toBeGreaterThanOrEqual(0);
+    });
+
+    it('should not allow check-out without check-in', async () => {
+      const response = await request(app)
+        .post('/api/attendance/check-out')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          location: {
+            type: 'office'
+          }
+        })
+        .expect(404);
+
+      expect(response.body.message).toBe('Aucun enregistrement d\'arrivée trouvé pour aujourd\'hui');
+    });
+  });
+});
+```
+
+### IV.3.2. Tests des workflows
+
+Les tests des workflows vérifient que les processus métier complets fonctionnent correctement :
+
+```javascript
+// backend/__tests__/integration/leaveWorkflow.test.js
+const request = require('supertest');
+const mongoose = require('mongoose');
+const app = require('../../app');
+const User = require('../../models/User');
+const Leave = require('../../models/Leave');
+const jwt = require('jsonwebtoken');
+
+describe('Leave Workflow', () => {
+  let employeeToken;
+  let managerToken;
+  let employee;
+  let manager;
+
+  beforeAll(async () => {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+
+    // Créer un manager
+    manager = await User.create({
+      firstName: 'Manager',
+      lastName: 'User',
+      email: 'manager@example.com',
+      password: 'password123',
+      role: 'manager'
+    });
+
+    // Créer un département
+    const department = {
+      _id: new mongoose.Types.ObjectId(),
+      name: 'Test Department',
+      manager: {
+        _id: manager._id,
+        firstName: manager.firstName,
+        lastName: manager.lastName,
+        email: manager.email
+      }
+    };
+
+    // Créer un employé
+    employee = await User.create({
+      firstName: 'Employee',
+      lastName: 'User',
+      email: 'employee@example.com',
+      password: 'password123',
+      role: 'employee',
+      department,
+      leaveBalance: {
+        paid: 20,
+        sick: 10,
+        training: 5,
+        unpaid: 0
+      }
+    });
+
+    // Générer des tokens JWT
+    employeeToken = jwt.sign(
+      { id: employee._id, role: employee.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    managerToken = jwt.sign(
+      { id: manager._id, role: manager.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+  });
+
+  afterAll(async () => {
+    await User.deleteMany({});
+    await Leave.deleteMany({});
+    await mongoose.connection.close();
+  });
+
+  beforeEach(async () => {
+    await Leave.deleteMany({});
+  });
+
+  it('should complete the full leave request workflow', async () => {
+    // 1. L'employé crée une demande de congé
+    const leaveData = {
+      type: 'paid',
+      startDate: '2023-07-01',
+      endDate: '2023-07-05',
+      reason: 'Vacances d\'été'
+    };
+
+    const createResponse = await request(app)
+      .post('/api/leaves')
+      .set('Authorization', `Bearer ${employeeToken}`)
+      .send(leaveData)
+      .expect(201);
+
+    expect(createResponse.body.message).toBe('Demande de congé créée avec succès');
+    expect(createResponse.body.leave).toBeDefined();
+    expect(createResponse.body.leave.status).toBe('pending');
+
+    const leaveId = createResponse.body.leave._id;
+
+    // 2. Le manager approuve la demande
+    const approveResponse = await request(app)
+      .put(`/api/leaves/${leaveId}/approve`)
+      .set('Authorization', `Bearer ${managerToken}`)
+      .send({
+        status: 'approved',
+        comments: 'Demande approuvée'
+      })
+      .expect(200);
+
+    expect(approveResponse.body.message).toBe('Demande de congé approuvée avec succès');
+    expect(approveResponse.body.leave.status).toBe('approved');
+
+    // 3. Vérifier que le solde de congés de l'employé a été mis à jour
+    const employeeResponse = await request(app)
+      .get(`/api/users/${employee._id}`)
+      .set('Authorization', `Bearer ${managerToken}`)
+      .expect(200);
+
+    // La demande couvre 5 jours, dont 3 jours ouvrés (en supposant que le 1er juillet est un samedi)
+    // Le solde initial était de 20 jours, il devrait donc être de 17 jours après approbation
+    expect(employeeResponse.body.user.leaveBalance.paid).toBe(17);
+
+    // 4. L'employé annule la demande approuvée
+    const cancelResponse = await request(app)
+      .put(`/api/leaves/${leaveId}/cancel`)
+      .set('Authorization', `Bearer ${employeeToken}`)
+      .send({
+        reason: 'Changement de plans'
+      })
+      .expect(200);
+
+    expect(cancelResponse.body.message).toBe('Demande de congé annulée avec succès');
+    expect(cancelResponse.body.leave.status).toBe('cancelled');
+
+    // 5. Vérifier que le solde de congés a été restauré
+    const updatedEmployeeResponse = await request(app)
+      .get(`/api/users/${employee._id}`)
+      .set('Authorization', `Bearer ${managerToken}`)
+      .expect(200);
+
+    expect(updatedEmployeeResponse.body.user.leaveBalance.paid).toBe(20);
+  });
+});
+```
+
+## IV.4. Tests fonctionnels
+
+### IV.4.1. Tests end-to-end avec Cypress
+
+Les tests end-to-end vérifient que l'application fonctionne correctement du point de vue de l'utilisateur :
+
+```javascript
+// frontend/cypress/integration/login.spec.js
+describe('Login Page', () => {
+  beforeEach(() => {
+    cy.visit('/login');
+  });
+
+  it('should display the login form', () => {
+    cy.get('h1').should('contain', 'Connexion');
+    cy.get('form').should('exist');
+    cy.get('input[name="email"]').should('exist');
+    cy.get('input[name="password"]').should('exist');
+    cy.get('button[type="submit"]').should('exist');
+  });
+
+  it('should show error for invalid credentials', () => {
+    cy.get('input[name="email"]').type('invalid@example.com');
+    cy.get('input[name="password"]').type('wrongpassword');
+    cy.get('button[type="submit"]').click();
+
+    cy.get('.MuiAlert-root').should('contain', 'Email ou mot de passe incorrect');
+  });
+
+  it('should login successfully with valid credentials', () => {
+    // Intercepter la requête d'API pour simuler une réponse réussie
+    cy.intercept('POST', '/api/auth/login', {
+      statusCode: 200,
+      body: {
+        token: 'fake-jwt-token',
+        refreshToken: 'fake-refresh-token',
+        user: {
+          id: '123',
+          firstName: 'John',
+          lastName: 'Doe',
+          email: 'john.doe@example.com',
+          role: 'employee'
+        }
+      }
+    }).as('loginRequest');
+
+    cy.get('input[name="email"]').type('john.doe@example.com');
+    cy.get('input[name="password"]').type('password123');
+    cy.get('button[type="submit"]').click();
+
+    cy.wait('@loginRequest');
+    cy.url().should('include', '/dashboard');
+  });
+
+  it('should navigate to forgot password page', () => {
+    cy.get('a').contains('Mot de passe oublié').click();
+    cy.url().should('include', '/forgot-password');
+  });
+});
+```
+
+### IV.4.2. Tests d'accessibilité
+
+Les tests d'accessibilité vérifient que l'application est utilisable par tous, y compris les personnes handicapées :
+
+```javascript
+// frontend/cypress/integration/accessibility.spec.js
+describe('Accessibility Tests', () => {
+  it('should pass accessibility tests on the login page', () => {
+    cy.visit('/login');
+    cy.injectAxe();
+    cy.checkA11y();
+  });
+
+  it('should pass accessibility tests on the dashboard page', () => {
+    // Simuler une connexion réussie
+    cy.login('john.doe@example.com', 'password123');
+    cy.visit('/dashboard');
+    cy.injectAxe();
+    cy.checkA11y();
+  });
+
+  it('should pass accessibility tests on the profile page', () => {
+    cy.login('john.doe@example.com', 'password123');
+    cy.visit('/profile');
+    cy.injectAxe();
+    cy.checkA11y();
+  });
+
+  it('should pass accessibility tests on the attendance page', () => {
+    cy.login('john.doe@example.com', 'password123');
+    cy.visit('/attendance');
+    cy.injectAxe();
+    cy.checkA11y();
+  });
+
+  it('should pass accessibility tests on the leaves page', () => {
+    cy.login('john.doe@example.com', 'password123');
+    cy.visit('/leaves');
+    cy.injectAxe();
+    cy.checkA11y();
+  });
+});
+```
+
+## IV.5. Tests de performance
+
+### IV.5.1. Tests de charge avec k6
+
+Les tests de charge vérifient que le système peut gérer un grand nombre d'utilisateurs simultanés :
+
+```javascript
+// tests/performance/load-test.js
+import http from 'k6/http';
+import { sleep, check } from 'k6';
+import { Counter } from 'k6/metrics';
+
+// Métriques personnalisées
+const failedRequests = new Counter('failed_requests');
+
+// Configuration du test
+export const options = {
+  stages: [
+    { duration: '1m', target: 50 }, // Montée en charge à 50 utilisateurs sur 1 minute
+    { duration: '3m', target: 50 }, // Maintien de 50 utilisateurs pendant 3 minutes
+    { duration: '1m', target: 100 }, // Montée à 100 utilisateurs sur 1 minute
+    { duration: '5m', target: 100 }, // Maintien de 100 utilisateurs pendant 5 minutes
+    { duration: '1m', target: 0 } // Réduction progressive à 0 utilisateur sur 1 minute
+  ],
+  thresholds: {
+    http_req_duration: ['p(95)<500'], // 95% des requêtes doivent être traitées en moins de 500ms
+    failed_requests: ['count<10'] // Moins de 10 requêtes échouées au total
+  }
+};
+
+// Fonction d'initialisation (exécutée une fois par VU)
+export function setup() {
+  // Authentification pour obtenir un token
+  const loginRes = http.post('http://localhost:5000/api/auth/login', {
+    email: 'test@example.com',
+    password: 'password123'
+  });
+  
+  check(loginRes, {
+    'login successful': (r) => r.status === 200,
+    'has token': (r) => JSON.parse(r.body).token !== undefined
+  });
+  
+  return {
+    token: JSON.parse(loginRes.body).token
+  };
+}
+
+// Fonction principale (exécutée pour chaque itération)
+export default function(data) {
+  const params = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${data.token}`
+    }
+  };
+  
+  // Test de l'endpoint de récupération du profil utilisateur
+  const profileRes = http.get('http://localhost:5000/api/users/profile', params);
+  
+  const profileCheck = check(profileRes, {
+    'profile status is 200': (r) => r.status === 200,
+    'profile has correct data': (r) => JSON.parse(r.body).user !== undefined
+  });
+  
+  if (!profileCheck) {
+    failedRequests.add(1);
+  }
+  
+  sleep(1);
+  
+  // Test de l'endpoint de récupération des présences
+  const attendanceRes = http.get('http://localhost:5000/api/attendance', params);
+  
+  const attendanceCheck = check(attendanceRes, {
+    'attendance status is 200': (r) => r.status === 200,
+    'attendance has data': (r) => JSON.parse(r.body).attendances !== undefined
+  });
+  
+  if (!attendanceCheck) {
+    failedRequests.add(1);
+  }
+  
+  sleep(1);
+  
+  // Test de l'endpoint de récupération des congés
+  const leavesRes = http.get('http://localhost:5000/api/leaves', params);
+  
+  const leavesCheck = check(leavesRes, {
+    'leaves status is 200': (r) => r.status === 200,
+    'leaves has data': (r) => JSON.parse(r.body).leaves !== undefined
+  });
+  
+  if (!leavesCheck) {
+    failedRequests.add(1);
+  }
+  
+  sleep(1);
+}
+```
+
+### IV.5.2. Tests de stress
+
+Les tests de stress vérifient que le système peut gérer des pics de charge importants :
+
+```javascript
+// tests/performance/stress-test.js
+import http from 'k6/http';
+import { sleep, check } from 'k6';
+import { Counter, Rate } from 'k6/metrics';
+
+// Métriques personnalisées
+const failedRequests = new Counter('failed_requests');
+const successRate = new Rate('success_rate');
+
+// Configuration du test
+export const options = {
+  stages: [
+    { duration: '1m', target: 100 }, // Montée rapide à 100 utilisateurs
+    { duration: '2m', target: 200 }, // Montée à 200 utilisateurs
+    { duration: '1m', target: 300 }, // Montée à 300 utilisateurs
+    { duration: '2m', target: 400 }, // Montée à 400 utilisateurs
+    { duration: '1m', target: 0 } // Réduction à 0
+  ],
+  thresholds: {
+    http_req_duration: ['p(95)<1000'], // 95% des requêtes doivent être traitées en moins de 1s
+    success_rate: ['rate>0.95'] // Taux de succès d'au moins 95%
+  }
+};
+
+// Fonction d'initialisation
+export function setup() {
+  // Création d'un pool de tokens pour les tests
+  const tokens = [];
+  
+  for (let i = 0; i < 10; i++) {
+    const loginRes = http.post('http://localhost:5000/api/auth/login', {
+      email: `test${i}@example.com`,
+      password: 'password123'
+    });
+    
+    if (loginRes.status === 200) {
+      tokens.push(JSON.parse(loginRes.body).token);
+    }
+  }
+  
+  return { tokens };
+}
+
+// Fonction principale
+export default function(data) {
+  // Sélection aléatoire d'un token dans le pool
+  const token = data.tokens[Math.floor(Math.random() * data.tokens.length)];
+  
+  const params = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  };
+  
+  // Test de l'endpoint de récupération du tableau de bord
+  const dashboardRes = http.get('http://localhost:5000/api/dashboard', params);
+  
+  const dashboardCheck = check(dashboardRes, {
+    'dashboard status is 200': (r) => r.status === 200
+  });
+  
+  successRate.add(dashboardCheck);
+  
+  if (!dashboardCheck) {
+    failedRequests.add(1);
+  }
+  
+  sleep(0.5);
+  
+  // Test de l'endpoint de check-in
+  const checkInRes = http.post('http://localhost:5000/api/attendance/check-in', {
+    location: { type: 'office' }
+  }, params);
+  
+  const checkInCheck = check(checkInRes, {
+    'check-in status is 200 or 400': (r) => r.status === 200 || r.status === 400
+  });
+  
+  successRate.add(checkInCheck);
+  
+  if (!checkInCheck) {
+    failedRequests.add(1);
+  }
+  
+  sleep(0.5);
+  
+  // Test de l'endpoint de création de tâche
+  const taskRes = http.post('http://localhost:5000/api/tasks', {
+    title: 'Tâche de test',
+    description: 'Description de la tâche de test',
+    priority: 'medium',
+    dueDate: new Date(Date.now() + 86400000).toISOString() // Demain
+  }, params);
+  
+  const taskCheck = check(taskRes, {
+    'task creation status is 201': (r) => r.status === 201
+  });
+  
+  successRate.add(taskCheck);
+  
+  if (!taskCheck) {
+    failedRequests.add(1);
+  }
+  
+  sleep(0.5);
+}
+```
+
+## IV.6. Tests de sécurité
+
+### IV.6.1. Tests de vulnérabilités
+
+Les tests de vulnérabilités vérifient que le système est protégé contre les attaques courantes :
+
+```javascript
+// tests/security/vulnerability-scan.js
+const { spawn } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+
+// Configuration du scan OWASP ZAP
+const targetUrl = 'http://localhost:3000';
+const reportPath = path.join(__dirname, 'reports', 'zap-report.html');
+
+// Fonction pour exécuter le scan ZAP
+async function runZapScan() {
+  return new Promise((resolve, reject) => {
+    console.log('Démarrage du scan de vulnérabilités avec OWASP ZAP...');
+    
+    // Commande pour exécuter ZAP en mode headless
+    const zapProcess = spawn('zap-cli', [
+      '--api-key', 'api-key-for-automation',
+      'quick-scan',
+      '--self-contained',
+      '--start-options', '-config api.disablekey=true',
+      '-r', reportPath,
+      targetUrl
+    ]);
+    
+    zapProcess.stdout.on('data', (data) => {
+      console.log(`ZAP: ${data}`);
+    });
+    
+    zapProcess.stderr.on('data', (data) => {
+      console.error(`ZAP Error: ${data}`);
+    });
+    
+    zapProcess.on('close', (code) => {
+      if (code === 0) {
+        console.log(`Scan terminé. Rapport généré à ${reportPath}`);
+        resolve();
+      } else {
+        console.error(`Le scan a échoué avec le code ${code}`);
+        reject(new Error(`Le scan a échoué avec le code ${code}`));
+      }
+    });
+  });
+}
+
+// Fonction pour analyser les résultats du scan
+async function analyzeResults() {
+  return new Promise((resolve, reject) => {
+    fs.readFile(reportPath, 'utf8', (err, data) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      
+      // Analyse simple du rapport HTML pour détecter les alertes de haut niveau
+      const highAlerts = (data.match(/class="risk-high"/g) || []).length;
+      const mediumAlerts = (data.match(/class="risk-medium"/g) || []).length;
+      
+      console.log(`Alertes détectées: ${highAl  || []).length;
+      
+      console.log(`Alertes détectées: ${highAlerts} de niveau élevé, ${mediumAlerts} de niveau moyen`);
+      
+      if (highAlerts > 0) {
+        console.error('ÉCHEC: Des vulnérabilités de niveau élevé ont été détectées!');
+        reject(new Error('Des vulnérabilités de niveau élevé ont été détectées'));
+      } else if (mediumAlerts > 5) {
+        console.error('AVERTISSEMENT: Nombre élevé de vulnérabilités de niveau moyen détectées');
+        resolve(false);
+      } else {
+        console.log('SUCCÈS: Aucune vulnérabilité critique détectée');
+        resolve(true);
+      }
+    });
+  });
+}
+
+// Exécution du test de sécurité
+async function runSecurityTest() {
+  try {
+    await runZapScan();
+    const result = await analyzeResults();
+    
+    if (result) {
+      console.log('Test de sécurité réussi');
+      process.exit(0);
+    } else {
+      console.log('Test de sécurité terminé avec des avertissements');
+      process.exit(1);
+    }
+  } catch (error) {
+    console.error('Test de sécurité échoué:', error);
+    process.exit(2);
+  }
+}
+
+runSecurityTest();
+```
+
+### IV.6.2. Tests d'authentification et d'autorisation
+
+Les tests d'authentification et d'autorisation vérifient que seuls les utilisateurs autorisés peuvent accéder aux fonctionnalités protégées :
+
+```javascript
+// backend/__tests__/security/authorization.test.js
+const request = require('supertest');
+const mongoose = require('mongoose');
+const app = require('../../app');
+const User = require('../../models/User');
+const jwt = require('jsonwebtoken');
+
+describe('Authorization Tests', () => {
+  let adminToken;
+  let managerToken;
+  let employeeToken;
+  let admin;
+  let manager;
+  let employee;
+
+  beforeAll(async () => {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+
+    // Créer les utilisateurs de test
+    admin = await User.create({
+      firstName: 'Admin',
+      lastName: 'User',
+      email: 'admin@example.com',
+      password: 'password123',
+      role: 'admin'
+    });
+
+    manager = await User.create({
+      firstName: 'Manager',
+      lastName: 'User',
+      email: 'manager@example.com',
+      password: 'password123',
+      role: 'manager'
+    });
+
+    employee = await User.create({
+      firstName: 'Employee',
+      lastName: 'User',
+      email: 'employee@example.com',
+      password: 'password123',
+      role: 'employee'
+    });
+
+    // Générer les tokens JWT
+    adminToken = jwt.sign(
+      { id: admin._id, role: admin.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    managerToken = jwt.sign(
+      { id: manager._id, role: manager.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    employeeToken = jwt.sign(
+      { id: employee._id, role: employee.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+  });
+
+  afterAll(async () => {
+    await User.deleteMany({});
+    await mongoose.connection.close();
+  });
+
+  describe('User Management Endpoints', () => {
+    it('should allow admin to access user list', async () => {
+      const response = await request(app)
+        .get('/api/users')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .expect(200);
+
+      expect(response.body.users).toBeDefined();
+    });
+
+    it('should deny employee access to user list', async () => {
+      const response = await request(app)
+        .get('/api/users')
+        .set('Authorization', `Bearer ${employeeToken}`)
+        .expect(403);
+
+      expect(response.body.message).toBe('Accès non autorisé');
+    });
+
+    it('should allow admin to create a new user', async () => {
+      const userData = {
+        firstName: 'New',
+        lastName: 'User',
+        email: 'new.user@example.com',
+        password: 'password123',
+        role: 'employee'
+      };
+
+      const response = await request(app)
+        .post('/api/users')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send(userData)
+        .expect(201);
+
+      expect(response.body.message).toBe('Utilisateur créé avec succès');
+    });
+
+    it('should deny manager access to create admin users', async () => {
+      const userData = {
+        firstName: 'New',
+        lastName: 'Admin',
+        email: 'new.admin@example.com',
+        password: 'password123',
+        role: 'admin'
+      };
+
+      const response = await request(app)
+        .post('/api/users')
+        .set('Authorization', `Bearer ${managerToken}`)
+        .send(userData)
+        .expect(403);
+
+      expect(response.body.message).toBe('Vous n\'avez pas les permissions nécessaires pour créer un administrateur');
+    });
+  });
+
+  describe('Department Management Endpoints', () => {
+    it('should allow admin to create departments', async () => {
+      const departmentData = {
+        name: 'Test Department',
+        description: 'Department for testing'
+      };
+
+      const response = await request(app)
+        .post('/api/departments')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send(departmentData)
+        .expect(201);
+
+      expect(response.body.message).toBe('Département créé avec succès');
+    });
+
+    it('should allow manager to view departments', async () => {
+      const response = await request(app)
+        .get('/api/departments')
+        .set('Authorization', `Bearer ${managerToken}`)
+        .expect(200);
+
+      expect(response.body.departments).toBeDefined();
+    });
+
+    it('should deny employee access to create departments', async () => {
+      const departmentData = {
+        name: 'Unauthorized Department',
+        description: 'This should not be created'
+      };
+
+      const response = await request(app)
+        .post('/api/departments')
+        .set('Authorization', `Bearer ${employeeToken}`)
+        .send(departmentData)
+        .expect(403);
+
+      expect(response.body.message).toBe('Accès non autorisé');
+    });
+  });
+
+  describe('Attendance Management Endpoints', () => {
+    it('should allow employee to check in', async () => {
+      const response = await request(app)
+        .post('/api/attendance/check-in')
+        .set('Authorization', `Bearer ${employeeToken}`)
+        .send({
+          location: { type: 'office' }
+        })
+        .expect(200);
+
+      expect(response.body.message).toBe('Arrivée enregistrée avec succès');
+    });
+
+    it('should allow manager to view team attendance', async () => {
+      const response = await request(app)
+        .get('/api/attendance/team')
+        .set('Authorization', `Bearer ${managerToken}`)
+        .expect(200);
+
+      expect(response.body.attendances).toBeDefined();
+    });
+
+    it('should deny employee access to team attendance', async () => {
+      const response = await request(app)
+        .get('/api/attendance/team')
+        .set('Authorization', `Bearer ${employeeToken}`)
+        .expect(403);
+
+      expect(response.body.message).toBe('Accès non autorisé');
+    });
+  });
+
+  describe('Report Generation Endpoints', () => {
+    it('should allow admin to generate all reports', async () => {
+      const response = await request(app)
+        .get('/api/reports/attendance')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .query({
+          startDate: '2023-01-01',
+          endDate: '2023-12-31'
+        })
+        .expect(200);
+
+      expect(response.body.report).toBeDefined();
+    });
+
+    it('should allow manager to generate team reports', async () => {
+      const response = await request(app)
+        .get('/api/reports/team-performance')
+        .set('Authorization', `Bearer ${managerToken}`)
+        .query({
+          startDate: '2023-01-01',
+          endDate: '2023-12-31'
+        })
+        .expect(200);
+
+      expect(response.body.report).toBeDefined();
+    });
+
+    it('should deny employee access to team reports', async () => {
+      const response = await request(app)
+        .get('/api/reports/team-performance')
+        .set('Authorization', `Bearer ${employeeToken}`)
+        .query({
+          startDate: '2023-01-01',
+          endDate: '2023-12-31'
+        })
+        .expect(403);
+
+      expect(response.body.message).toBe('Accès non autorisé');
+    });
+  });
+});
+```
+
+# Chapitre V : Déploiement et maintenance
+
+## V.1. Stratégie de déploiement
+
+### V.1.1. Environnements de déploiement
+
+Pour assurer un déploiement fiable et contrôlé, trois environnements distincts ont été mis en place :
+
+1. **Environnement de développement** : Utilisé par l'équipe de développement pour tester les nouvelles fonctionnalités et corrections de bugs.
+2. **Environnement de test (staging)** : Utilisé pour les tests d'intégration, les tests de performance et les tests utilisateurs avant le déploiement en production.
+3. **Environnement de production** : Environnement final accessible aux utilisateurs réels.
+
+
+Chaque environnement dispose de sa propre configuration et de ses propres ressources, garantissant ainsi l'isolation et la stabilité.
+
+### V.1.2. Pipeline de déploiement continu
+
+Le pipeline de déploiement continu automatise le processus de déploiement, réduisant ainsi les erreurs humaines et accélérant la mise en production des nouvelles fonctionnalités :
+
+```yaml
+# .github/workflows/deploy.yml
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          
+      - name: Install dependencies
+        run: |
+          cd backend && npm ci
+          cd ../frontend && npm ci
+          
+      - name: Run tests
+        run: |
+          cd backend && npm test
+          cd ../frontend && npm test
+          
+      - name: Build frontend
+        run: cd frontend && npm run build
+        
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: |
+            frontend/build
+            backend
+            !backend/node_modules
+            docker-compose.yml
+            nginx
+  
+  deploy-staging:
+    needs: build
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
+          
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.STAGING_SSH_KEY }}
+          
+      - name: Deploy to staging server
+        run: |
+          rsync -avz --delete . ${{ secrets.STAGING_USER }}@${{ secrets.STAGING_HOST }}:/var/www/hr-management-staging/
+          ssh ${{ secrets.STAGING_USER }}@${{ secrets.STAGING_HOST }} "cd /var/www/hr-management-staging && docker-compose down && docker-compose up -d --build"
+  
+  deploy-production:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
+          
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.PRODUCTION_SSH_KEY }}
+          
+      - name: Deploy to production server
+        run: |
+          rsync -avz --delete . ${{ secrets.PRODUCTION_USER }}@${{ secrets.PRODUCTION_HOST }}:/var/www/hr-management-production/
+          ssh ${{ secrets.PRODUCTION_USER }}@${{ secrets.PRODUCTION_HOST }} "cd /var/www/hr-management-production && docker-compose down && docker-compose up -d --build"
+```
+
+### V.1.3. Configuration Nginx
+
+La configuration Nginx permet de gérer le routage des requêtes et la sécurité au niveau du serveur web :
+
+```plaintext
+# nginx/conf/default.conf
+server {
+    listen 80;
+    server_name hr-management.example.com;
+    
+    # Redirection vers HTTPS
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name hr-management.example.com;
+    
+    # Configuration SSL
+    ssl_certificate /etc/nginx/ssl/fullchain.pem;
+    ssl_certificate_key /etc/nginx/ssl/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+    
+    # En-têtes de sécurité
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' wss://$host;";
+    
+    # Frontend
+    location / {
+        root /usr/share/nginx/html;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+    
+    # API Backend
+    location /api {
+        proxy_pass http://backend:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+    
+    # WebSocket pour Socket.io
+    location /socket.io {
+        proxy_pass http://backend:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+```
+
+## V.2. Monitoring et logging
+
+### V.2.1. Configuration du monitoring
+
+Le monitoring permet de surveiller les performances et la disponibilité du système en temps réel :
+
+```javascript
+// backend/middleware/monitoring.js
+const promClient = require('prom-client');
+const responseTime = require('response-time');
+
+// Création du registre Prometheus
+const register = new promClient.Registry();
+
+// Ajout des métriques par défaut
+promClient.collectDefaultMetrics({ register });
+
+// Compteur de requêtes HTTP
+const httpRequestsTotal = new promClient.Counter({
+  name: 'http_requests_total',
+  help: 'Total number of HTTP requests',
+  labelNames: ['method', 'route', 'status'],
+  registers: [register]
+});
+
+// Histogramme des temps de réponse
+const httpRequestDurationMs = new promClient.Histogram({
+  name: 'http_request_duration_ms',
+  help: 'HTTP request duration in milliseconds',
+  labelNames: ['method', 'route', 'status'],
+  buckets: [10, 50, 100, 200, 500, 1000, 2000, 5000, 10000],
+  registers: [register]
+});
+
+// Middleware pour mesurer le temps de réponse
+const monitorResponseTime = responseTime((req, res, time) => {
+  const route = req.route ? req.route.path : req.path;
+  const method = req.method;
+  const status = res.statusCode;
+  
+  httpRequestsTotal.inc({ method, route, status });
+  httpRequestDurationMs.observe({ method, route, status }, time);
+});
+
+// Endpoint pour exposer les métriques Prometheus
+const metricsEndpoint = (req, res) => {
+  res.set('Content-Type', register.contentType);
+  register.metrics().then(metrics => {
+    res.end(metrics);
+  });
+};
+
+module.exports = {
+  monitorResponseTime,
+  metricsEndpoint
+};
+```
+
+### V.2.2. Configuration du logging
+
+Le logging permet de collecter des informations sur le fonctionnement du système pour faciliter le débogage et l'analyse :
+
+```javascript
+// backend/utils/logger.js
+const winston = require('winston');
+const { format, transports } = winston;
+const path = require('path');
+
+// Configuration des formats de log
+const logFormat = format.combine(
+  format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+  format.errors({ stack: true }),
+  format.splat(),
+  format.json()
+);
+
+// Création du logger
+const logger = winston.createLogger({
+  level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
+  format: logFormat,
+  defaultMeta: { service: 'hr-management-api' },
+  transports: [
+    // Logs de console en développement
+    new transports.Console({
+      format: format.combine(
+        format.colorize(),
+        format.printf(({ timestamp, level, message, ...meta }) => {
+          return `${timestamp} ${level}: ${message} ${Object.keys(meta).length ? JSON.stringify(meta, null, 2) : ''}`;
+        })
+      ),
+      silent: process.env.NODE_ENV === 'test'
+    }),
+    
+    // Logs d'erreur dans un fichier
+    new transports.File({
+      filename: path.join(__dirname, '../logs/error.log'),
+      level: 'error',
+      maxsize: 10485760, // 10 MB
+      maxFiles: 5
+    }),
+    
+    // Tous les logs dans un fichier
+    new transports.File({
+      filename: path.join(__dirname, '../logs/combined.log'),
+      maxsize: 10485760, // 10 MB
+      maxFiles: 5
+    })
+  ]
+});
+
+// Middleware pour logger les requêtes HTTP
+const requestLogger = (req, res, next) => {
+  const start = Date.now();
+  
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    const message = `${req.method} ${req.originalUrl} ${res.statusCode} ${duration}ms`;
+    
+    const meta = {
+      method: req.method,
+      url: req.originalUrl,
+      status: res.statusCode,
+      duration,
+      ip: req.ip,
+      userId: req.user ? req.user._id : 'anonymous'
+    };
+    
+    if (res.statusCode >= 400) {
+      logger.warn(message, meta);
+    } else {
+      logger.info(message, meta);
+    }
+  });
+  
+  next();
+};
+
+// Middleware pour logger les erreurs
+const errorLogger = (err, req, res, next) => {
+  logger.error(err.message, {
+    error: err,
+    method: req.method,
+    url: req.originalUrl,
+    ip: req.ip,
+    userId: req.user ? req.user._id : 'anonymous',
+    body: req.body,
+    query: req.query,
+    params: req.params
+  });
+  
+  next(err);
+};
+
+module.exports = {
+  logger,
+  requestLogger,
+  errorLogger
+};
+```
+
+## V.3. Sauvegarde et récupération
+
+### V.3.1. Stratégie de sauvegarde
+
+La stratégie de sauvegarde garantit la sécurité des données et la possibilité de récupération en cas de problème :
+
+```javascript
+// backend/scripts/backup.js
+const { exec } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const moment = require('moment');
+const { logger } = require('../utils/logger');
+const { uploadToS3 } = require('../utils/s3');
+
+// Configuration
+const BACKUP_DIR = path.join(__dirname, '../backups');
+const RETENTION_DAYS = 30;
+const MONGODB_URI = process.env.MONGODB_URI;
+const DB_NAME = MONGODB_URI.split('/').pop().split('?')[0];
+
+// Création du répertoire de sauvegarde s'il n'existe pas
+if (!fs.existsSync(BACKUP_DIR)) {
+  fs.mkdirSync(BACKUP_DIR, { recursive: true });
+}
+
+// Fonction pour créer une sauvegarde
+async function createBackup() {
+  const timestamp = moment().format('YYYY-MM-DD_HH-mm-ss');
+  const backupFileName = `${DB_NAME}_${timestamp}.gz`;
+  const backupFilePath = path.join(BACKUP_DIR, backupFileName);
+  
+  logger.info(`Création de la sauvegarde: ${backupFileName}`);
+  
+  return new Promise((resolve, reject) => {
+    // Commande mongodump pour créer la sauvegarde
+    const command = `mongodump --uri="${MONGODB_URI}" --gzip --archive=${backupFilePath}`;
+    
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        logger.error(`Erreur lors de la création de la sauvegarde: ${error.message}`);
+        reject(error);
+        return;
+      }
+      
+      logger.info(`Sauvegarde créée avec succès: ${backupFilePath}`);
+      resolve(backupFilePath);
+    });
+  });
+}
+
+// Fonction pour nettoyer les anciennes sauvegardes
+function cleanupOldBackups() {
+  logger.info('Nettoyage des anciennes sauvegardes...');
+  
+  const files = fs.readdirSync(BACKUP_DIR);
+  
+  for (const file of files) {
+    const filePath = path.join(BACKUP_DIR, file);
+    const stats = fs.statSync(filePath);
+    const fileDate = moment(stats.mtime);
+    const daysOld = moment().diff(fileDate, 'days');
+    
+    if (daysOld > RETENTION_DAYS) {
+      logger.info(`Suppression de l'ancienne sauvegarde: ${file} (${daysOld} jours)`);
+      fs.unlinkSync(filePath);
+    }
+  }
+}
+
+// Fonction principale
+async function runBackup() {
+  try {
+    // Création de la sauvegarde
+    const backupFilePath = await createBackup();
+    
+    // Upload de la sauvegarde vers S3
+    if (process.env.AWS_S3_BUCKET) {
+      logger.info('Upload de la sauvegarde vers S3...');
+      
+      const s3Key = `backups/${path.basename(backupFilePath)}`;
+      await uploadToS3(backupFilePath, s3Key);
+      
+      logger.info(`Sauvegarde uploadée vers S3: ${s3Key}`);
+    }
+    
+    // Nettoyage des anciennes sauvegardes
+    cleanupOldBackups();
+    
+    logger.info('Processus de sauvegarde terminé avec succès');
+  } catch (error) {
+    logger.error(`Erreur lors du processus de sauvegarde: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+// Exécution de la sauvegarde
+runBackup();
+```
+
+### V.3.2. Procédure de récupération
+
+La procédure de récupération permet de restaurer le système en cas de panne ou de corruption des données :
+
+```javascript
+// backend/scripts/restore.js
+const { exec } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const readline = require('readline');
+const { logger } = require('../utils/logger');
+const { downloadFromS3 } = require('../utils/s3');
+
+// Configuration
+const BACKUP_DIR = path.join(__dirname, '../backups');
+const MONGODB_URI = process.env.MONGODB_URI;
+
+// Fonction pour lister les sauvegardes disponibles
+function listBackups() {
+  logger.info('Sauvegardes disponibles:');
+  
+  // Vérifier les sauvegardes locales
+  const localFiles = fs.readdirSync(BACKUP_DIR)
+    .filter(file => file.endsWith('.gz'))
+    .sort((a, b) => {
+      const statsA = fs.statSync(path.join(BACKUP_DIR, a));
+      const statsB = fs.statSync(path.join(BACKUP_DIR, b));
+      return statsB.mtime.getTime() - statsA.mtime.getTime();
+    });
+  
+  if (localFiles.length === 0) {
+    logger.info('Aucune sauvegarde locale disponible');
+  } else {
+    logger.info('Sauvegardes locales:');
+    localFiles.forEach((file, index) => {
+      const stats = fs.statSync(path.join(BACKUP_DIR, file));
+      logger.info(`${index + 1}. ${file} (${new Date(stats.mtime).toLocaleString()})`);
+    });
+  }
+  
+  return localFiles;
+}
+
+// Fonction pour restaurer une sauvegarde
+async function restoreBackup(backupFilePath) {
+  logger.info(`Restauration de la sauvegarde: ${backupFilePath}`);
+  
+  return new Promise((resolve, reject) => {
+    // Commande mongorestore pour restaurer la sauvegarde
+    const command = `mongorestore --uri="${MONGODB_URI}" --gzip --archive=${backupFilePath} --drop`;
+    
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        logger.error(`Erreur lors de la restauration: ${error.message}`);
+        reject(error);
+        return;
+      }
+      
+      logger.info(`Restauration terminée avec succès: ${backupFilePath}`);
+      resolve();
+    });
+  });
+}
+
+// Fonction pour télécharger une sauvegarde depuis S3
+async function downloadBackupFromS3(s3Key) {
+  logger.info(`Téléchargement de la sauvegarde depuis S3: ${s3Key}`);
+  
+  const localPath = path.join(BACKUP_DIR, path.basename(s3Key));
+  await downloadFromS3(s3Key, localPath);
+  
+  logger.info(`Sauvegarde téléchargée: ${localPath}`);
+  return localPath;
+}
+
+// Interface utilisateur en ligne de commande
+async function promptUser() {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  
+  return new Promise((resolve) => {
+    const localFiles = listBackups();
+    
+    if (localFiles.length === 0) {
+      rl.question('Aucune sauvegarde locale disponible. Voulez-vous télécharger une sauvegarde depuis S3? (o/n) ', async (answer) => {
+        if (answer.toLowerCase() === 'o') {
+          rl.close();
+          resolve({ fromS3: true });
+        } else {
+          logger.info('Restauration annulée');
+          rl.close();
+          process.exit(0);
+        }
+      });
+    } else {
+      rl.question('Entrez le numéro de la sauvegarde à restaurer (ou "s3" pour télécharger depuis S3): ', (answer) => {
+        rl.close();
+        
+        if (answer.toLowerCase() === 's3') {
+          resolve({ fromS3: true });
+        } else {
+          const index = parseInt(answer) - 1;
+          if (index >= 0 && index < localFiles.length) {
+            resolve({ fromS3: false, file: localFiles[index] });
+          } else {
+            logger.error('Numéro de sauvegarde invalide');
+            process.exit(1);
+          }
+        }
+      });
+    }
+  });
+}
+
+// Fonction principale
+async function runRestore() {
+  try {
+    logger.info('Démarrage du processus de restauration...');
+    
+    // Demander à l'utilisateur quelle sauvegarde restaurer
+    const { fromS3, file } = await promptUser();
+    
+    let backupFilePath;
+    
+    if (fromS3) {
+      // Télécharger la sauvegarde depuis S3
+      const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+      });
+      
+      const s3Key = await new Promise((resolve) => {
+        rl.question('Entrez la clé S3 de la sauvegarde à télécharger: ', (answer) => {
+          rl.close();
+          resolve(answer);
+        });
+      });
+      
+      backupFilePath = await downloadBackupFromS3(s3Key);
+    } else {
+      // Utiliser une sauvegarde locale
+      backupFilePath = path.join(BACKUP_DIR, file);
+    }
+    
+    // Demander confirmation avant de restaurer
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+    
+    const confirmation = await new Promise((resolve) => {
+      rl.question(`Êtes-vous sûr de vouloir restaurer la sauvegarde ${path.basename(backupFilePath)}? Cette opération écrasera toutes les données existantes. (o/n) `, (answer) => {
+        rl.close();
+        resolve(answer.toLowerCase() === 'o');
+      });
+    });
+    
+    if (confirmation) {
+      // Restaurer la sauvegarde
+      await restoreBackup(backupFilePath);
+      logger.info('Processus de restauration terminé avec succès');
+    } else {
+      logger.info('Restauration annulée');
+    }
+  } catch (error) {
+    logger.error(`Erreur lors du processus de restauration: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+// Exécution de la restauration
+runRestore();
+```
+
+## V.4. Mise à jour et évolution
+
+### V.4.1. Gestion des versions
+
+La gestion des versions permet de suivre l'évolution du système et de faciliter les mises à jour :
+
+```javascript
+// package.json
+{
+  "name": "hr-management-system",
+  "version": "1.0.0",
+  "description": "Système de gestion RH et de suivi du temps",
+  "scripts": {
+    "version:major": "npm version major && cd frontend && npm version major && cd ../backend && npm version major",
+    "version:minor": "npm version minor && cd frontend && npm version minor && cd ../backend && npm version minor",
+    "version:patch": "npm version patch && cd frontend && npm version patch && cd ../backend && npm version patch",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/example/hr-management-system.git"
+  },
+  "author": "Votre Nom",
+  "license": "MIT",
+  "devDependencies": {
+    "conventional-changelog-cli": "^2.2.2"
+  }
+}
+```
+
+### V.4.2. Procédure de mise à jour
+
+La procédure de mise à jour définit les étapes à suivre pour mettre à jour le système en production :
+
+```markdown
+# Procédure de mise à jour
+
+Ce document décrit la procédure à suivre pour mettre à jour le système de gestion RH et de suivi du temps en production.
+
+## Prérequis
+
+- Accès SSH au serveur de production
+- Accès au registre Docker
+- Accès au dépôt Git
+
+## Étapes de mise à jour
+
+### 1. Préparation
+
+1. Vérifier que toutes les modifications ont été fusionnées dans la branche `main`
+2. Vérifier que tous les tests passent sur la branche `main`
+3. Créer une nouvelle version en utilisant l'une des commandes suivantes :
+   - `npm run version:major` pour une mise à jour majeure (changements incompatibles)
+   - `npm run version:minor` pour une mise à jour mineure (nouvelles fonctionnalités)
+   - `npm run version:patch` pour une mise à jour corrective (corrections de bugs)
+4. Générer le changelog : `npm run changelog`
+5. Pousser les modifications vers le dépôt distant : `git push --follow-tags`
+
+### 2. Sauvegarde
+
+1. Se connecter au serveur de production : `ssh user@production-server`
+2. Créer une sauvegarde de la base de données :
+   ```bash
+   cd /var/www/hr-management-production
+   docker-compose exec -T mongodb mongodump --archive=/backup/pre-update-$(date +%Y%m%d).gz --gzip
+```
+
+3. Copier la sauvegarde vers un emplacement sécurisé :
+
+```shellscript
+scp user@production-server:/var/www/hr-management-production/backup/pre-update-*.gz /path/to/local/backup/
+```
+
+
+
+
+### 3. Déploiement
+
+1. Attendre que le pipeline CI/CD termine le déploiement automatique
+2. Vérifier le statut du déploiement :
+
+```shellscript
+cd /var/www/hr-management-production
+docker-compose ps
+```
+
+
+3. Vérifier les logs pour détecter d'éventuelles erreurs :
+
+```shellscript
+docker-compose logs -f
+```
+
+
+
+
+### 4. Vérification
+
+1. Vérifier que l'application est accessible à l'URL de production
+2. Vérifier que les fonctionnalités principales fonctionnent correctement :
+
+1. Authentification
+2. Gestion des utilisateurs
+3. Suivi des présences
+4. Gestion des congés
+5. Messagerie
+6. Assistant IA
+
+
+
+3. Vérifier les métriques de performance dans le tableau de bord de monitoring
+
+
+### 5. Rollback (en cas de problème)
+
+Si des problèmes sont détectés après la mise à jour, suivre la procédure de rollback :
+
+1. Se connecter au serveur de production : `ssh user@production-server`
+2. Revenir à la version précédente :
+
+```shellscript
+cd /var/www/hr-management-production
+git checkout v1.x.y  # Remplacer par la version précédente
+docker-compose down
+docker-compose up -d --build
+```
+
+
+3. Si nécessaire, restaurer la base de données :
+
+```shellscript
+docker-compose exec -T mongodb mongorestore --drop --archive=/backup/pre-update-*.gz --gzip
+```
+
+
+4. Vérifier que l'application fonctionne correctement après le rollback
+
+
+### 6. Communication
+
+1. Informer les utilisateurs de la mise à jour via :
+
+1. Email
+2. Notification dans l'application
+3. Annonce sur l'intranet
+
+
+
+2. Fournir un résumé des nouvelles fonctionnalités ou corrections
+3. Indiquer les éventuelles actions requises de la part des utilisateurs
+
+
+```plaintext
+
+### V.4.3. Roadmap d'évolution
+
+La roadmap d'évolution définit les fonctionnalités et améliorations prévues pour les futures versions du système :
+
+```markdown
+# Roadmap d'évolution
+
+Ce document présente la roadmap d'évolution du système de gestion RH et de suivi du temps pour les 12 prochains mois.
+
+## Version 1.1 (T3 2023)
+
+### Améliorations de l'interface utilisateur
+- [ ] Refonte du tableau de bord pour une meilleure visualisation des données
+- [ ] Amélioration de l'expérience mobile
+- [ ] Ajout de thèmes personnalisables
+
+### Nouvelles fonctionnalités
+- [ ] Intégration avec Google Calendar pour la synchronisation des congés
+- [ ] Système de notifications push
+- [ ] Export des rapports au format PDF
+
+### Optimisations techniques
+- [ ] Amélioration des performances de chargement des pages
+- [ ] Mise en cache des données fréquemment utilisées
+- [ ] Optimisation des requêtes de base de données
+
+## Version 1.2 (T4 2023)
+
+### Module de recrutement
+- [ ] Gestion des offres d'emploi
+- [ ] Suivi des candidatures
+- [ ] Planification des entretiens
+- [ ] Évaluation des candidats
+
+### Améliorations de l'assistant IA
+- [ ] Analyse prédictive des tendances de présence
+- [ ] Recommandations personnalisées pour l'équilibre travail-vie personnelle
+- [ ] Détection automatique des anomalies dans les données de présence
+
+### Intégrations
+- [ ] Intégration avec Slack pour les notifications
+- [ ] Intégration avec Jira pour la synchronisation des tâches
+- [ ] Intégration avec Zoom pour la planification des réunions
+
+## Version 2.0 (T1-T2 2024)
+
+### Module de gestion des talents
+- [ ] Évaluation des performances
+- [ ] Gestion des objectifs
+- [ ] Plans de développement personnalisés
+- [ ] Suivi des compétences
+
+### Module de formation
+- [ ] Catalogue de formations
+- [ ] Gestion des inscriptions
+- [ ] Suivi des certifications
+- [ ] Évaluation des formations
+
+### Analyse avancée des données
+- [ ] Tableaux de bord analytiques avancés
+- [ ] Rapports personnalisables
+- [ ] Prévisions basées sur l'IA
+- [ ] Analyse comparative (benchmarking)
+
+## Améliorations continues
+
+### Sécurité
+- [ ] Audit de sécurité régulier
+- [ ] Mise à jour des dépendances
+- [ ] Renforcement de l'authentification
+- [ ] Chiffrement des données sensibles
+
+### Performance
+- [ ] Optimisation continue des requêtes
+- [ ] Amélioration des temps de chargement
+- [ ] Réduction de la consommation de ressources
+
+### Expérience utilisateur
+- [ ] Collecte et analyse des retours utilisateurs
+- [ ] Tests d'utilisabilité
+- [ ] Amélioration de l'accessibilité
+```
+
+# Conclusion générale
+
+Le système de gestion RH et de suivi du temps développé dans le cadre de ce projet de fin d'études répond aux besoins identifiés lors de l'analyse de l'existant. Il offre une solution complète et intégrée pour la gestion des ressources humaines et le suivi du temps de travail, avec des fonctionnalités avancées telles que l'assistant IA pour l'analyse des performances.
+
+## Synthèse des réalisations
+
+Le projet a permis de mettre en place un système complet comprenant :
+
+1. **Un module d'authentification et de gestion des utilisateurs** sécurisé, avec support de l'authentification multi-méthodes et gestion fine des permissions.
+2. **Un module de gestion des départements** pour organiser la structure de l'entreprise.
+3. **Un module de suivi des présences** pour l'enregistrement et la validation des heures de travail.
+4. **Un module de gestion des congés** avec workflow d'approbation et calcul automatique des soldes.
+5. **Un module de gestion des tâches** pour l'attribution et le suivi des tâches.
+6. **Un module de messagerie interne** pour faciliter la communication entre les utilisateurs.
+7. **Un module d'assistant IA** pour l'analyse des performances et les recommandations personnalisées.
+8. **Un module de rapports et d'analyses** pour la visualisation et l'exploitation des données.
+
+
+Ces modules ont été développés en utilisant des technologies modernes (React, Node.js, MongoDB) et en suivant les meilleures pratiques de développement (architecture modulaire, tests automatisés, intégration continue, déploiement continu).
+
+## Apports du projet
+
+Le système développé apporte plusieurs bénéfices significatifs :
+
+1. **Centralisation des données** : Toutes les informations RH sont désormais centralisées dans un système unique, éliminant les silos d'information et facilitant l'accès aux données.
+2. **Automatisation des processus** : Les processus manuels ont été automatisés, réduisant ainsi le temps consacré aux tâches administratives et les risques d'erreurs.
+3. **Amélioration de l'expérience utilisateur** : L'interface intuitive et responsive facilite l'utilisation du système par tous les acteurs (employés, managers, RH).
+4. **Aide à la décision** : Les tableaux de bord et rapports fournissent des informations précieuses pour la prise de décision.
+5. **Intelligence artificielle** : L'assistant IA apporte une dimension d'analyse avancée et de recommandations personnalisées.
+
+
+## Perspectives d'évolution
+
+Le système a été conçu pour évoluer et s'adapter aux besoins futurs de l'entreprise. Les perspectives d'évolution incluent :
+
+1. **Extension des fonctionnalités** : Ajout de nouveaux modules (recrutement, gestion des talents, formation) pour couvrir l'ensemble du cycle de vie des employés.
+2. **Intégrations** : Développement d'intégrations avec d'autres systèmes (ERP, CRM, outils de collaboration) pour créer un écosystème cohérent.
+3. **Intelligence artificielle avancée** : Renforcement des capacités d'analyse prédictive et de recommandation de l'assistant IA.
+4. **Internationalisation** : Adaptation du système pour une utilisation dans un contexte international (multilingue, multi-fuseau horaire, conformité aux réglementations locales).
+5. **Mobile** : Développement d'applications mobiles natives pour une expérience optimale sur smartphones et tablettes.
+
+
+## Bilan personnel
+
+Ce projet de fin d'études a été une opportunité enrichissante de mettre en pratique les connaissances acquises durant la formation et de développer de nouvelles compétences. Il a permis de se confronter à des problématiques réelles et de proposer des solutions concrètes.
+
+Les principales compétences développées incluent :
+
+- La conception et le développement d'applications web complexes
+- La gestion de projet informatique
+- L'intégration de l'intelligence artificielle dans les applications métier
+- La mise en place de pipelines d'intégration et de déploiement continus
+- La rédaction de documentation technique et fonctionnelle
+
+
+Ce projet constitue une base solide pour la suite du parcours professionnel, avec une réalisation concrète démontrant la capacité à mener à bien un projet de développement logiciel de bout en bout.
+
+# Annexes
+
+## Annexe A : Glossaire
+
+| Terme | Définition
+|-----|-----
+| API | Application Programming Interface, interface permettant à des applications de communiquer entre elles
+| CI/CD | Continuous Integration / Continuous Deployment, pratiques de développement logiciel visant à automatiser les tests et le déploiement
+| CRUD | Create, Read, Update, Delete, opérations de base pour la manipulation des données
+| IA | Intelligence Artificielle, capacité d'un système informatique à simuler l'intelligence humaine
+| JWT | JSON Web Token, standard ouvert pour la création de tokens d'accès
+| MongoDB | Base de données NoSQL orientée documents
+| Node.js | Environnement d'exécution JavaScript côté serveur
+| OAuth | Protocole d'autorisation permettant à un site web ou une application d'accéder à des ressources protégées
+| React | Bibliothèque JavaScript pour la création d'interfaces utilisateur
+| REST | Representational State Transfer, style d'architecture pour les systèmes distribués
+| RGPD | Règlement Général sur la Protection des Données, règlement européen sur la protection des données personnelles
+| UI/UX | User Interface / User Experience, interface utilisateur et expérience utilisateur
+
+
+## Annexe B : Liste des figures
+
+1. Figure 1 : Architecture globale du système
+2. Figure 2 : Diagramme de cas d'utilisation global
+3. Figure 3 : Diagramme de cas d'utilisation "Gestion des utilisateurs"
+4. Figure 4 : Diagramme de cas d'utilisation "Suivi des présences"
+5. Figure 5 : Diagramme de séquence "Authentification avec JWT"
+6. Figure 6 : Diagramme de séquence "Validation d'une demande de congé"
+7. Figure 7 : Diagramme de séquence "Analyse des performances par l'assistant IA"
+8. Figure 8 : Diagramme de classes
+9. Figure 9 : Modèle de données MongoDB
+10. Figure 10 : Interface de connexion
+11. Figure 11 : Tableau de bord principal
+12. Figure 12 : Interface de suivi des présences
+13. Figure 13 : Interface de gestion des congés
+14. Figure 14 : Interface de l'assistant IA
+15. Figure 15 : Architecture de déploiement
+
+
+## Annexe C : Liste des tableaux
+
+1. Tableau 1 : Comparaison des solutions existantes
+2. Tableau 2 : Exigences fonctionnelles
+3. Tableau 3 : Exigences non fonctionnelles
+4. Tableau 4 : Rôles et permissions
+5. Tableau 5 : Technologies utilisées
+6. Tableau 6 : Plan de test
+7. Tableau 7 : Résultats des tests de performance
+8. Tableau 8 : Estimation des coûts
+9. Tableau 9 : Analyse des risques
+10. Tableau 10 : Bénéfices attendus
+
+
+## Annexe D : Références bibliographiques
+
+1. Fowler, M. (2002). *Patterns of Enterprise Application Architecture*. Addison-Wesley Professional.
+2. Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley Professional.
+3. Martin, R. C. (2017). *Clean Architecture: A Craftsman's Guide to Software Structure and Design*. Prentice Hall.
+4. Newman, S. (2015). *Building Microservices: Designing Fine-Grained Systems*. O'Reilly Media.
+5. Nygard, M. T. (2007). *Release It!: Design and Deploy Production-Ready Software*. Pragmatic Bookshelf.
+6. Humble, J., & Farley, D. (2010). *Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation*. Addison-Wesley Professional.
+7. Kim, G., Debois, P., Willis, J., & Humble, J. (2016). *The DevOps Handbook: How to Create World-Class Agility, Reliability, and Security in Technology Organizations*. IT Revolution Press.
+8. Kleppmann, M. (2017). *Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems*. O'Reilly Media.
+9. Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley Professional.
+10. Holovaty, A., & Kaplan-Moss, J. (2009). *The Definitive Guide to Django: Web Development Done Right*. Apress.
+
+
+## Annexe E : Manuel d'utilisation
+
+Le manuel d'utilisation complet est disponible dans le dépôt Git du projet, dans le répertoire `docs/user-manual`. Il comprend les sections suivantes :
+
+1. Introduction
+2. Installation et configuration
+3. Premiers pas
+4. Gestion des utilisateurs et des départements
+5. Suivi des présences
+6. Gestion des congés
+7. Gestion des tâches
+8. Messagerie interne
+9. Assistant IA
+10. Rapports et analyses
+11. Administration du système
+12. Résolution des problèmes courants
+13. FAQ
+
+
+## Annexe F : Documentation technique
+
+La documentation technique complète est disponible dans le dépôt Git du projet, dans le répertoire `docs/technical-docs`. Elle comprend les sections suivantes :
+
+1. Architecture du système
+2. Modèle de données
+3. API REST
+4. Sécurité
+5. Performance
+6. Déploiement
+7. Monitoring et logging
+8. Sauvegarde et récupération
+9. Guide de développement
+10. Guide de contribution
